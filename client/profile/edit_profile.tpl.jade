@@ -21,18 +21,18 @@
                 .ui.left.icon.input
                     i.linkify.icon
                     input#link(type='text' value=profile.link)
+            // .field
+            //     label Professional Tags
+            //     each profile.tags
+            //         .ui.small.compact.button.person_tag
+            //             i.minus.icon
+            //             |#{this}
+            //     .ui.left.icon.input
+            //         i.add.icon
+            //         input#add_tag(type='text' placeholder='Press enter after each tag' maxlength='50')
             .field
-                label Professional Tags
-                each profile.tags
-                    .ui.small.compact.button.person_tag
-                        i.minus.icon
-                        |#{this}
-                .ui.left.icon.input
-                    i.add.icon
-                    input#add_tag(type='text' placeholder='Press enter after each tag' maxlength='50')
-            .field
-                label Personal Tags
-                each profile.tags
+                label Tags
+                each tags
                     .ui.small.compact.button.person_tag
                         i.minus.icon
                         |#{this}

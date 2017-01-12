@@ -19,7 +19,7 @@ Template.people.onCreated ->
 
 Template.people.helpers
     people: -> 
-        Meteor.users.find { }, 
+        Meteor.users.find { _id: $ne: Meteor.userId() }, 
             sort:
                 tag_count: 1
                 points: -1

@@ -15,7 +15,7 @@ template(name='view_profile')
                 a.ui.circular.large.blue.icon.button(href=twitter target='_blank')
                     i.twitter.icon
             .ui.hidden.divider
-            if profile.tags
+            if tags
                 i.large.tags.icon
-                each profile.tags
+                each tags
                     .ui.basic.label #{this}

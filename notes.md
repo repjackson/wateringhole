@@ -151,3 +151,8 @@ facet enterprise
     controlled tags
     cost $200/month minimum (could be provided by transactions)
     % on transactions through site
+    
+    
+    
+facet
+    find people, contact them

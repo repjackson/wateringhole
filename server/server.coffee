@@ -1,3 +1,14 @@
+Meteor.users.allow
+    update: (userId, doc, fields, modifier) ->
+        console.log 'user ' + userId + 'wants to modify doc' + doc._id
+        if userId and doc._id == userId
+            console.log 'user allowed to modify own account'
+        true
+
+
+
+
+
 Meteor.publish 'me', -> 
     Meteor.users.find @userId
         # fields: 
@@ -8,6 +19,7 @@ Meteor.publish 'usernames', () ->
 
 
 Meteor.publish 'tags', (selected_tags)->
+    my_id = @userId
     self = @
     match = {}
     if selected_tags.length > 0 then match.tags = $all: selected_tags
@@ -15,8 +27,9 @@ Meteor.publish 'tags', (selected_tags)->
     cloud = Meteor.users.aggregate [
         { $match: match }
         { $project: tags: 1 }
-        { $unwind: "$profile.tags" }
+        { $unwind: "$tags" }
         { $group: _id: '$tags', count: $sum: 1 }
+        { $match: _id: $nin: [my_id] }
         { $match: _id: $nin: selected_tags }
         { $sort: count: -1, _id: 1 }
         { $limit: 20 }
@@ -35,9 +48,9 @@ Meteor.publish 'tags', (selected_tags)->
 
 Meteor.publish 'people', (selected_tags)->
     match = {}
-    if selected_tags.length > 0 then match['profile.tags'] = $all: selected_tags
+    if selected_tags.length > 0 then match.tags = $all: selected_tags
     # match.tags = $all: selected_tags
-
+    match._id = $ne: @userId
     Meteor.users.find match
 
 

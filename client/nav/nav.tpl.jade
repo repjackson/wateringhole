@@ -3,12 +3,12 @@
     // .ui.icon.input.item
     //     +inputAutocomplete settings=settings id="search" class="" autofocus='' placeholder='Search....' autocomplete="off"
     .right.menu
-        a.item(href="/profile/edit" class="{{isActivePath '/profile/edit'}}")
-            if currentUser.name
-                | #{currentUser.username}
-            else
-                | Profile
         if currentUser
+            a.item(href="/profile/edit" class="{{isActivePath '/profile/edit'}}")
+                if currentUser.name
+                    | #{currentUser.username}
+                else
+                    | Profile
             a#logout.ui.item(href='#') 
                 // i.large.sign.out.icon
                 |Log Out

@@ -1,13 +1,17 @@
-.item
-    .content
-        a.ui.header(href="/view/#{_id}") 
-            |#{profile.name}, #{username}
-            
-        .meta
-            if profile.link
-                a(href=link target='_window') #{profile.link}
-        .meta
-            each profile.tags
-                .ui.small.compact.button.person_tag(class=tag_class) #{this}
-        .description !{profile.bio}
-        .extra
+.ui.segment
+    .item
+        .content
+            a.ui.header(href="/view/#{_id}") 
+                |#{profile.name}, #{username}
+                
+            .meta
+                if profile.link
+                    a(href=link target='_window') #{profile.link}
+            .meta
+                each tags
+                    .ui.small.compact.button.person_tag(class=tag_class) #{this}
+            .description !{profile.bio}
+            .extra
+                .ui.small.compact.green.button 
+                    i.send.icon
+                    |Contact

@@ -1,5 +1,8 @@
 
 Template.nav.events
+    'click #logout': -> AccountsTemplates.logout()
+
+
     # 'keyup #search': (e,t)->
     #     e.preventDefault()
     #     val = $('#search').val().toLowerCase().trim()

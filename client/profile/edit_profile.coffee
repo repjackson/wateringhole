@@ -54,7 +54,7 @@ Template.edit_profile.helpers
 
 Template.edit_profile.events
     'click #save_profile': ->
-        FlowRouter.go "/profile/view/#{Meteor.userId()}"
+        FlowRouter.go "/view/#{Meteor.userId()}"
 
     'blur #name': ->
         name = $('#name').val()
@@ -68,13 +68,13 @@ Template.edit_profile.events
             tag = $('#add_tag').val().toLowerCase().trim()
             if tag.length > 0
                 Meteor.users.update Meteor.userId(),
-                    $addToSet: "profile.tags": tag
+                    $addToSet: tags: tag
                 $('#add_tag').val('')
 
     'click .profile_tag': (e,t)->
         tag = @valueOf()
         Meteor.users.update Meteor.userId(),
-            $pull: "profile.tags": tag
+            $pull: tags: tag
         $('#add_tag').val(tag)
 
 
