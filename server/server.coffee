@@ -35,31 +35,12 @@ Meteor.publish 'tags', (selected_tags)->
 
 Meteor.publish 'people', (selected_tags)->
     match = {}
-    if selected_tags.length > 0 then match.profile.tags = $all: selected_tags
+    if selected_tags.length > 0 then match['profile.tags'] = $all: selected_tags
     # match.tags = $all: selected_tags
 
     Meteor.users.find match
 
 
-Meteor.methods
-    generate_person_cloud: (uid)->
-
-        cloud = Docs.aggregate [
-            { $match: author_id: Meteor.userId() }
-            { $project: tags: 1 }
-            { $unwind: '$tags' }
-            { $group: _id: '$tags', count: $sum: 1 }
-            { $sort: count: -1, _id: 1 }
-            { $limit: 20 }
-            { $project: _id: 0, name: '$_id', count: 1 }
-            ]
-            
-            
-        list = (tag.name for tag in cloud)
-        Meteor.users.update Meteor.userId(),
-            $set:
-                cloud: cloud
-                list: list
 
 
 # Meteor.publish 'my_profile', ->

@@ -4,7 +4,10 @@
             |#{profile.name}, #{username}
             
         .meta
+            if profile.link
+                a(href=link target='_window') #{profile.link}
+        .meta
             each profile.tags
-                .ui.small.link.label.doc_tag(class=tag_class) #{this}
+                .ui.small.compact.button.person_tag(class=tag_class) #{this}
         .description !{profile.bio}
         .extra

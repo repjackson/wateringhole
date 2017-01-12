@@ -14,11 +14,15 @@
                     input(type='file' name='upload_picture' accept='image/*')
             .field
                 label Name
-                .ui.left.icon.input
-                    i.user.icon
+                .ui.input
                     input#name(type='text' value=profile.name)
             .field
-                label Tags
+                label Link
+                .ui.left.icon.input
+                    i.linkify.icon
+                    input#link(type='text' value=profile.link)
+            .field
+                label Professional Tags
                 each profile.tags
                     .ui.small.compact.button.person_tag
                         i.minus.icon
@@ -26,8 +30,16 @@
                 .ui.left.icon.input
                     i.add.icon
                     input#add_tag(type='text' placeholder='Press enter after each tag' maxlength='50')
-                .field
-                    .ui.center.aligned.basic.segment
-                        #save_profile.ui.center.aligned.green.button 
-                            // i.check.icon
-                            |Save
+            .field
+                label Personal Tags
+                each profile.tags
+                    .ui.small.compact.button.person_tag
+                        i.minus.icon
+                        |#{this}
+                .ui.left.icon.input
+                    i.add.icon
+                    input#add_tag(type='text' placeholder='Press enter after each tag' maxlength='50')
+            .field
+                .ui.center.aligned.basic.segment
+                    #save_profile.ui.center.aligned.green.button 
+                        |Save

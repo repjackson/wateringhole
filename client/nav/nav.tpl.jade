@@ -1,7 +1,7 @@
 .ui.inverted.menu
     a.ui.active.header.inverted.item(href='/') Watering Hole
-    .ui.icon.input.item
-        +inputAutocomplete settings=settings id="search" class="" autofocus='' placeholder='Search....' autocomplete="off"
+    // .ui.icon.input.item
+    //     +inputAutocomplete settings=settings id="search" class="" autofocus='' placeholder='Search....' autocomplete="off"
     .right.menu
         a.item(href="/profile/edit" class="{{isActivePath '/profile/edit'}}")
             if currentUser.name
@@ -14,7 +14,7 @@
                 |Log Out
         else
             a.ui.item(href='/sign-in') 
-                i.large.sign.in.icon
-                // |Log In
+                // i.large.sign.in.icon
+                |Log In
 
 

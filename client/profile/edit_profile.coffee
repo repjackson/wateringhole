@@ -6,16 +6,6 @@ Template.edit_profile.onCreated ->
 
 Template.edit_profile.helpers
     # person: -> Meteor.users.findOne FlowRouter.getParam('user_id')
-    profile_doc: -> 
-        profile_doc = Docs.findOne
-            type: 'member_profile'
-            author_id: Meteor.userId()
-        
-        # if profile_doc then console.log 'found profile doc', profile_doc
-        # else
-        #     console.log 'didnt find profile doc'
-            
-        return profile_doc
 
     # matchedUsersList:->
     #     users = Meteor.users.find({_id: $ne: Meteor.userId()}).fetch()
@@ -129,3 +119,8 @@ Template.edit_profile.events
     'click #remove_photo': ->
         Meteor.users.update Meteor.userId(),
             $unset: "profile.image_id": 1
+            
+    'blur #link': ->
+        link = $('#link').val()
+        Meteor.users.update Meteor.userId(),
+            $set: "profile.link": link
