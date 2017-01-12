@@ -12,7 +12,6 @@ template(name='layout')
 
 template(name='cloud')
     #cloud.ui.basic.segment.center.aligned.container
-        h2.ui.header Filter Services
         if selected_tags
             #clear_tags.ui.primary.icon.compact.button
                 i.remove.icon
@@ -20,37 +19,15 @@ template(name='cloud')
                 .unselect_tag.ui.primary.compact.button
                     strong #{this}
         each all_tags
-            // div
-            // .ui.compact.button.select_tag #{this.name}
             .ui.compact.button.select_tag(class=cloud_tag_class) #{this.name}
-                    // small #{this.count}
-                    // small [#{this.index}]
 
-
-template(name='docs')
+template(name='people')
     .ui.container
         .ui.divided.items
-            each docs
+            each people
                 // .ui.divided.basic.segments
-                +item
+                +person
 
-
-template(name='view')
-    .ui.container
-        .content
-            each tags
-                // strong #{this} &nbsp;
-                .ui.compact.tiny.button.ftag(class=tag_class) #{this}
-            .ui.basic.segment !{body}
-            div by #{author.username}
-            // if is_author
-            .edit.ui.small.icon.circular.button
-                i.pencil.icon.icon
-            // else
-            //     // span by #{author.username}
-            //     .ui.icon.circular.compact.button.vote_up(class=vote_up_button_class): i.thumbs.up.icon
-            //     // .ui.circular.basic.label Points: #{points}
-            //     .ui.icon.circular.compact.button.vote_down(class=vote_down_button_class): i.thumbs.down.icon
 
                     
 template(name='tag_result')

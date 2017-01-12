@@ -135,3 +135,19 @@ start with the concept that intellect ranks you higher
 we all want to get laid, connect the real/day world with the night world
 
 level up in the day world to get laid in the night world.
+
+
+
+
+todo
+    notifications
+    profile
+    review process
+    
+    
+facet enterprise
+    private tag
+    private site
+    controlled tags
+    cost $200/month minimum (could be provided by transactions)
+    % on transactions through site

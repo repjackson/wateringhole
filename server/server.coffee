@@ -1,13 +1,3 @@
-Docs.allow
-    insert: (userId, doc)-> doc.author_id is Meteor.userId()
-    update: (userId, doc)-> doc.author_id is Meteor.userId()
-    remove: (userId, doc)-> doc.author_id is Meteor.userId()
-
-
-
-
-Meteor.publish 'doc', (id)-> Docs.find id
-
 Meteor.publish 'me', -> 
     Meteor.users.find @userId
         # fields: 
@@ -22,14 +12,14 @@ Meteor.publish 'tags', (selected_tags)->
     match = {}
     if selected_tags.length > 0 then match.tags = $all: selected_tags
 
-    cloud = Docs.aggregate [
+    cloud = Meteor.users.aggregate [
         { $match: match }
         { $project: tags: 1 }
-        { $unwind: '$tags' }
+        { $unwind: "$profile.tags" }
         { $group: _id: '$tags', count: $sum: 1 }
         { $match: _id: $nin: selected_tags }
         { $sort: count: -1, _id: 1 }
-        { $limit: 50 }
+        { $limit: 20 }
         { $project: _id: 0, name: '$_id', count: 1 }
         ]
     # console.log 'cloud, ', cloud
@@ -43,18 +33,12 @@ Meteor.publish 'tags', (selected_tags)->
     
 
 
-Meteor.publish 'docs', (selected_tags)->
+Meteor.publish 'people', (selected_tags)->
     match = {}
-    if selected_tags.length > 0 then match.tags = $all: selected_tags
+    if selected_tags.length > 0 then match.profile.tags = $all: selected_tags
     # match.tags = $all: selected_tags
 
-    Docs.find match,
-        sort:
-            points: 1
-            tag_count: 1
-            timestamp: -1
-        limit: 10
-
+    Meteor.users.find match
 
 
 Meteor.methods
@@ -76,3 +60,35 @@ Meteor.methods
             $set:
                 cloud: cloud
                 list: list
+
+
+# Meteor.publish 'my_profile', ->
+#     Meteor.users.find @userId,
+#         fields:
+#             tags: 1
+#             profile: 1
+#             username: 1
+#             published: 1
+#             image_id: 1
+
+
+# Meteor.publish 'user_profile', (id)->
+#     Meteor.users.find id,
+#         fields:
+#             tags: 1
+#             profile: 1
+#             username: 1
+#             published: 1
+#             image_id: 1
+
+
+Meteor.publish 'user_profile', ->
+    Meteor.users.find @userId
+
+
+    
+Meteor.publish 'view_profile', (user_id)->
+    Meteor.users.find user_id
+
+        
+Meteor.methods

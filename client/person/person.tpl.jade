@@ -1,0 +1,10 @@
+.item
+    .content
+        a.ui.header(href="/view/#{_id}") 
+            |#{profile.name}, #{username}
+            
+        .meta
+            each profile.tags
+                .ui.small.link.label.doc_tag(class=tag_class) #{this}
+        .description !{profile.bio}
+        .extra

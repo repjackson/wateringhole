@@ -98,15 +98,20 @@ Meteor.methods
 
 
 
-FlowRouter.route '/edit/:doc_id',
-    name: 'edit'
-    action: ->
-        BlazeLayout.render 'layout', 
-            main: 'edit'
-
 FlowRouter.route '/',
     name: 'home'
     action: ->
         BlazeLayout.render 'layout', 
             cloud: 'cloud'
-            main: 'docs'
+            main: 'people'
+
+
+FlowRouter.route '/profile/edit/', action: (params) ->
+    BlazeLayout.render 'layout',
+        # sub_nav: 'account_nav'
+        main: 'edit_profile'
+
+FlowRouter.route '/profile/view/:user_id', action: (params) ->
+    BlazeLayout.render 'layout',
+        main: 'view_profile'
+
