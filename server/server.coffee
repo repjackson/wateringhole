@@ -5,6 +5,11 @@ Meteor.users.allow
             console.log 'user allowed to modify own account'
         true
 
+Cloudinary.config
+    cloud_name: 'facet'
+    api_key: Meteor.settings.cloudinary_key
+    api_secret: Meteor.settings.cloudinary_secret
+
 
 
 
@@ -19,17 +24,17 @@ Meteor.publish 'usernames', () ->
 
 
 Meteor.publish 'tags', (selected_tags)->
-    my_id = @userId
     self = @
     match = {}
     if selected_tags.length > 0 then match.tags = $all: selected_tags
+    match._id = $ne: @userId
+
 
     cloud = Meteor.users.aggregate [
         { $match: match }
         { $project: tags: 1 }
         { $unwind: "$tags" }
         { $group: _id: '$tags', count: $sum: 1 }
-        { $match: _id: $nin: [my_id] }
         { $match: _id: $nin: selected_tags }
         { $sort: count: -1, _id: 1 }
         { $limit: 20 }

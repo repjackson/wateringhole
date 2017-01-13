@@ -5,6 +5,7 @@ Template.edit_profile.onCreated ->
 
 
 Template.edit_profile.helpers
+    ten_tags: -> @tags?.length is 10
     # person: -> Meteor.users.findOne FlowRouter.getParam('user_id')
 
     # matchedUsersList:->
@@ -19,37 +20,6 @@ Template.edit_profile.helpers
     #     sortedList = _.sortBy(userMatches, 'length').reverse()
     #     return sortedList
 
-    # upVotedMatchCloud: ->
-    #     users = Meteor.users.find({_id: $ne: Meteor.userId()}).fetch()
-    #     userMatchClouds = []
-    #     for user in users
-    #         myUpVotedCloud = Meteor.user().upvotedCloud
-    #         myUpVotedList = Meteor.user().upvotedList
-    #         # console.log 'myUpVotedCloud', myUpVotedCloud
-    #         otherUpVotedCloud = user.upvotedCloud
-    #         otherUpVotedList = user.upvotedList
-    #         # console.log 'otherCloud', otherUpVotedCloud
-    #         intersection = _.intersection(myUpVotedList, otherUpVotedList)
-    #         intersectionCloud = []
-    #         totalCount = 0
-    #         for tag in intersection
-    #             myTagObject = _.findWhere myUpVotedCloud, name: tag
-    #             hisTagObject = _.findWhere otherUpVotedCloud, name: tag
-    #             # console.log hisTagObject.count
-    #             min = Math.min(myTagObject.count, hisTagObject.count)
-    #             totalCount += min
-    #             intersectionCloud.push
-    #                 tag: tag
-    #                 min: min
-    #         sortedCloud = _.sortBy(intersectionCloud, 'min').reverse()
-    #         userMatchClouds.push
-    #             matchedUser: user.username
-    #             cloudIntersection: sortedCloud
-    #             totalCount: totalCount
-
-
-    #     sortedCloud = _.sortBy(userMatchClouds, 'totalCount').reverse()
-    #     return sortedCloud
 
 
 Template.edit_profile.events
@@ -58,9 +28,32 @@ Template.edit_profile.events
 
     'blur #name': ->
         name = $('#name').val()
-
         Meteor.users.update Meteor.userId(),
             $set: "profile.name": name
+            
+    'blur #link': ->
+        link = $('#link').val()
+        Meteor.users.update Meteor.userId(),
+            $set: "profile.link": link
+            
+    'blur #location': ->
+        location = $('#location').val()
+        Meteor.users.update Meteor.userId(),
+            $set: "profile.location": location
+            
+            
+            
+            
+            
+    'blur #personal_bio': ->
+        personal_bio = $('#personal_bio').val()
+        Meteor.users.update Meteor.userId(),
+            $set: "profile.personal_bio": personal_bio
+            
+    'blur #pro_bio': ->
+        pro_bio = $('#pro_bio').val()
+        Meteor.users.update Meteor.userId(),
+            $set: "profile.pro_bio": pro_bio
             
 
     'keydown #add_tag': (e,t)->
@@ -71,7 +64,7 @@ Template.edit_profile.events
                     $addToSet: tags: tag
                 $('#add_tag').val('')
 
-    'click .profile_tag': (e,t)->
+    'click .person_tag': (e,t)->
         tag = @valueOf()
         Meteor.users.update Meteor.userId(),
             $pull: tags: tag
@@ -120,7 +113,3 @@ Template.edit_profile.events
         Meteor.users.update Meteor.userId(),
             $unset: "profile.image_id": 1
             
-    'blur #link': ->
-        link = $('#link').val()
-        Meteor.users.update Meteor.userId(),
-            $set: "profile.link": link

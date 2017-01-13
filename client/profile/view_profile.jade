@@ -1,10 +1,20 @@
 template(name='view_profile')
     .ui.text.container.segment
-        .ui.center.aligned.header View Profile
+        // .ui.center.aligned.header View Profile
         with person
-            img.ui.centered.big.image(src="{{c.url profile.image_id width=800 height=600 gravity='face' crop='fill'}}")
+            img.ui.centered.large.image(src="{{c.url profile.image_id width=800 height=600 gravity='face' crop='fill'}}")
             h2.ui.header
                 |#{profile.name}
+            if profile.link
+                .link
+                    a(href=profile.link target='_blank') 
+                        i.linkify.icon
+                        |#{profile.link}
+            if profile.location
+                .location
+                    a(href=profile.location target='_blank') 
+                        i.location.arrow.icon
+                        |#{profile.location}
             if linkedin
                 a.ui.circular.large.blue.icon.button(href=linkedin target='_blank')
                     i.linkedin.icon
@@ -19,3 +29,7 @@ template(name='view_profile')
                 i.large.tags.icon
                 each tags
                     .ui.basic.label #{this}
+            .ui.header Personal Bio
+            p #{profile.personal_bio}
+            .ui.header Professional Bio
+            p #{profile.pro_bio}

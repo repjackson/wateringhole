@@ -1,13 +1,14 @@
 Template.cloud.helpers
     all_tags: ->
-        Tags.find()
+        user_count = Meteor.users.find().count()
+        if 0 < user_count < 3 then Tags.find({ count: $lt: user_count }, {limit:20}) else Tags.find({}, limit:20)
 
     cloud_tag_class: ->
-        buttonClass = switch
+        button_class = switch
             when @index <= 5 then ''
             when @index <= 12 then 'small'
             when @index <= 20 then 'tiny'
-        return buttonClass
+        return button_class
 
     selected_tags: -> selected_tags.list()
 

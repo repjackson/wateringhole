@@ -1,9 +1,9 @@
 #cloud.ui.basic.segment.center.aligned.container
     if selected_tags
-        #clear_tags.ui.primary.icon.compact.button
+        #clear_tags.ui.teal.icon.compact.button
             i.remove.icon
         each selected_tags
-            .unselect_tag.ui.primary.compact.button
+            .unselect_tag.ui.teal.compact.button
                 strong #{this}
     each all_tags
         .ui.compact.button.select_tag(class=cloud_tag_class) #{this.name}

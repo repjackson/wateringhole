@@ -1,24 +1,29 @@
-.ui.inverted.menu
-    a.ui.active.header.inverted.item(href='/') Cerebrum
-    // .ui.icon.input.item
-    //     +inputAutocomplete settings=settings id="search" class="" autofocus='' placeholder='Search....' autocomplete="off"
+.ui.inverted.teal.menu
+    a.ui.active.header.inverted.item(href='/') 
+        i.theme.icon
+        |Watering Hole
+    .ui.icon.input.item
+        +inputAutocomplete settings=settings id="search" class="" autofocus='' placeholder='Search....' autocomplete="off"
     .right.menu
         if currentUser
             a.item(href="/messages" class="{{isActivePath '/messages'}}")
                 i.envelope.icon
                 | Messages
             a.item(href="/profile/edit" class="{{isActivePath '/profile/edit'}}")
-                i.user.icon
+                if currentUser.profile.image_id
+                    img.ui.avatar.image(src="{{c.url currentUser.profile.image_id width=30 height=30 gravity='face' crop='fill'}}")
+                else
+                    i.user.icon
                 if currentUser.profile.name
                     | #{currentUser.profile.name}
                 else
                     | #{currentUser.username}
             a#logout.ui.item(href='#') 
-                // i.large.sign.out.icon
+                i.large.sign.out.icon
                 |Log Out
         else
             a.ui.item(href='/sign-in') 
-                // i.large.sign.in.icon
+                i.large.sign.in.icon
                 |Log In
 
 

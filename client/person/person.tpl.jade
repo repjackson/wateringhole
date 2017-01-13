@@ -1,17 +1,37 @@
 .ui.segment
-    .item
-        .content
+    .ui.stackable.grid
+        .four.wide.column
+            img.ui.centered.image(src="{{c.url profile.image_id width=200 height=200 gravity='face' crop='fill'}}")
+        .twelve.wide.column
             a.ui.header(href="/view/#{_id}") 
-                |#{profile.name}, #{username}
-                
+                |#{profile.name}
             .meta
                 if profile.link
-                    a(href=link target='_window') #{profile.link}
+                    a(href=profile.link target='_window') 
+                        i.linkify.icon
+                        |#{profile.link}
+            .meta
+                if profile.location
+                    // a(href=location target='_window') 
+                    i.location.arrow.icon
+                    |#{profile.location}
             .meta
                 each tags
-                    .ui.small.compact.button.person_tag(class=tag_class) #{this}
-            .description !{profile.bio}
-            .extra
-                .ui.small.compact.basic.green.button 
-                    i.send.icon
-                    |Contact
+                    .ui.tiny.compact.button.person_tag(class=tag_class) #{this}
+            .ui.basic.segment 
+                .ui.styled.accordion
+                    .active.title
+                        i.user.icon
+                        | Personal
+                    .active.content
+                        p #{profile.personal_bio}
+                    .title
+                        i.building.icon
+                        | Professional
+                    .content
+                        p #{profile.pro_bio}
+                    .title
+                        i.send.icon
+                        | Contact
+                    .content
+                        p contact form

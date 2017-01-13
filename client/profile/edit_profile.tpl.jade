@@ -6,7 +6,7 @@
                 if profile.image_id
                     label Image
                     .ui.centered.image
-                        img.ui.medium.image(src="{{c.url profile.image_id width=400 height=400 gravity='face' crop='fill'}}")
+                        img.ui.image(src="{{c.url profile.image_id width=400 height=400 gravity='face' crop='fill'}}")
                         a#remove_photo.ui.right.corner.link.label
                             i.remove.red.link.icon
                 else
@@ -16,6 +16,11 @@
                 label Name
                 .ui.input
                     input#name(type='text' value=profile.name)
+            .field
+                label Location
+                .ui.left.icon.input
+                    i.compass.icon
+                    input#location(type='text' value=profile.location)
             .field
                 label Link
                 .ui.left.icon.input
@@ -31,14 +36,21 @@
             //         i.add.icon
             //         input#add_tag(type='text' placeholder='Press enter after each tag' maxlength='50')
             .field
-                label Tags
+                label Choose up to ten tags to describe your personal/professional life
                 each tags
                     .ui.small.compact.button.person_tag
                         i.minus.icon
                         |#{this}
-                .ui.left.icon.input
-                    i.add.icon
-                    input#add_tag(type='text' placeholder='Press enter after each tag' maxlength='50')
+                unless ten_tags
+                    .ui.left.icon.input
+                        i.add.icon
+                        input#add_tag(type='text' placeholder='Press enter after each tag' maxlength='30')
+            .field
+                label Personal Bio 
+                textarea#personal_bio(rows='3') #{profile.personal_bio}
+            .field
+                label Professional Bio
+                textarea#pro_bio(rows='3') #{profile.pro_bio}
             .field
                 .ui.center.aligned.basic.segment
                     #save_profile.ui.center.aligned.green.button 

@@ -1,6 +1,6 @@
 {
   "definitions": {
-    "accordion": false,
+    "accordion": true,
     "ad": false,
     "api": false,
     "breadcrumb": false,
@@ -17,10 +17,10 @@
     "feed": false,
     "flag": false,
     "form": true,
-    "grid": false,
+    "grid": true,
     "header": true,
     "icon": true,
-    "image": false,
+    "image": true,
     "input": true,
     "item": true,
     "label": true,
