@@ -28,12 +28,13 @@ template(name='sent_messages')
 template(name='message')
     .content
         a.author
-            |#{author.username}
+            |#{from.username}
             i.right.arrow.icon
-            |#{recipient.username}
+            |#{to.username}
         .metadata
             span.date #{when}
-        .text #{body}
+        .text 
+            strong #{text}
 
 
 template(name='user_pill')

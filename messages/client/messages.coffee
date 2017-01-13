@@ -7,7 +7,7 @@ Template.sent_messages.onCreated ->
 
 
 Template.sent_messages.helpers
-    sent_messages: -> Messages.find( author_id: Meteor.userId() )
+    sent_messages: -> Messages.find( from_id: Meteor.userId() )
 
     userSettings: -> {
         position: 'bottom'
@@ -23,7 +23,7 @@ Template.sent_messages.helpers
 
 
 Template.received_messages.helpers
-    received_messages: -> Messages.find( recipient_id: Meteor.userId() )
+    received_messages: -> Messages.find( to_id: Meteor.userId() )
 
 
 Template.sent_messages.events
