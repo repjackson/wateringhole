@@ -5,7 +5,7 @@
     "api": false,
     "breadcrumb": false,
     "button": true,
-    "card": false,
+    "card": true,
     "checkbox": false,
     "colorize": false,
     "comment": false,
@@ -46,7 +46,7 @@
     "step": false,
     "sticky": false,
     "tab": false,
-    "table": false,
+    "table": true,
     "transition": true,
     "visibility": false,
     "visit": false

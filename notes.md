@@ -134,10 +134,9 @@ start with the concept that intellect ranks you higher
 
 
 todo
-    notifications
-    profile
-    review process
-    
+    message page
+    function like a chat, look like email
+
     
 watering hole
     private tag
@@ -149,3 +148,10 @@ watering hole
 facet
     tags controlled by middleware,
     find people, contact them
+    
+    
+wh admin
+    integrations
+        importing from
+        exporting to
+    crm system
