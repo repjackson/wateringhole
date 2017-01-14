@@ -1,0 +1,18 @@
+.ui.container
+    // +submissions
+    // +user_management
+    #add_doc.ui.basic.button
+        i.plus.icon
+        |Doc
+    #add_page.ui.basic.button
+        i.plus.icon
+        |Page
+    #add_slide.ui.basic.button
+        i.plus.icon
+        |Slide
+    +content_cloud
+    .ui.centered.four.stackable.cards
+        each docs
+            +card_view
+
+

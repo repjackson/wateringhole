@@ -1,0 +1,15 @@
+// h2.impact-header Filter
+.ui.basic.segment
+    .ui.left.icon.input
+        i.search.icon
+        +inputAutocomplete settings=settings id="search" class="" autocomplete="off" placeholder='Search Tags'
+    if selected_content_tags
+        #clear_tags.ui.red.compact.large.icon.button
+            i.remove.icon
+    if selected_content_tags
+        each selected_content_tags
+            a.ui.red.compact.large.button.unselect_tag
+                strong #{this}
+    each content_tags
+        .ui.compact.basic.button.select_tag(class=tag_cloud_class) #{this.name}
+            small #{this.count}
