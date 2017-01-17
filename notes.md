@@ -113,17 +113,7 @@ look at it from need perspectives
         
         
         
-vertical list
-only add one word
-up/down vote for each word
-
-say sentence.  everything is broken up.
-
-
-
-
-
-what if dating app that was a game
+what if dating app was a game
 
 uplevel with intellect
 we make life a game
@@ -155,3 +145,11 @@ wh admin
         importing from
         exporting to
     crm system
+    
+    
+thoughts
+    emmett needs a spreadsheet replacement, top priority
+    people management, import, move around, find things, export
+    crm system
+    
+structure
