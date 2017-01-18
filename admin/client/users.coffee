@@ -90,12 +90,10 @@ Template.users.events
 
 
     'click .check_in': ->
-        console.log @
         Meteor.users.update @_id,
             $set: checked_in: true
 
     'click .check_out': ->
-        console.log @
         Meteor.users.update @_id,
             $set: checked_in: false
 

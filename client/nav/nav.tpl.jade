@@ -2,10 +2,10 @@
     a.ui.header.inverted.item(href='/') 
         |Watering Hole
     .right.menu
+        a.item(href='/admin' class="{{isActivePath '/admin/'}}")
+            i.configure.icon
+            | Admin
         if currentUser
-            a.item(href='/admin' class="{{isActivePath '/admin/'}}")
-                i.configure.icon
-                | Admin
             a.item(href="/profile/edit/#{currentUser._id}" )
                 if currentUser.profile.image_id
                     img.ui.avatar.image(src="{{c.url currentUser.profile.image_id width=30 height=30 gravity='face' crop='fill'}}")
