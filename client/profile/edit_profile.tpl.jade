@@ -5,6 +5,9 @@
             .field
                 if profile.image_id
                     p Old: #{profile.image_id}
+                .field
+                    label Current image_id: #{image_id}
+                    input#input_image_id(type='text' placeholder='Change')
                 if image_id
                     label Image
                     .ui.centered.image
@@ -18,6 +21,10 @@
                 label Name (#{profile.name})
                 .ui.input
                     input#name(type='text' value=name)
+            .field
+                label Email
+                each emails
+                    .ui.basic.label #{this}
             .field
                 label Choose up to ten tags to describe your personal/professional life
                 if profile.tags

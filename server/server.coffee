@@ -1,9 +1,10 @@
 Meteor.users.allow
     update: (userId, doc, fields, modifier) ->
-        # console.log 'user ' + userId + 'wants to modify doc' + doc._id
-        if userId and doc._id == userId
-            # console.log 'user allowed to modify own account'
-            true
+        true
+        # # console.log 'user ' + userId + 'wants to modify doc' + doc._id
+        # if userId and doc._id == userId
+        #     # console.log 'user allowed to modify own account'
+        #     true
 
 Cloudinary.config
     cloud_name: 'facet'
@@ -17,7 +18,7 @@ Meteor.publish 'tags', (selected_tags)->
     match = {}
     if selected_tags.length > 0 then match.tags = $all: selected_tags
     match._id = $ne: @userId
-
+    match.checked_in = true
 
     cloud = Meteor.users.aggregate [
         { $match: match }
@@ -45,6 +46,8 @@ Meteor.publish 'people', (selected_tags)->
     if selected_tags.length > 0 then match.tags = $all: selected_tags
     # match.tags = $all: selected_tags
     match._id = $ne: @userId
+    match.checked_in = true
+    
     Meteor.users.find match,
         fields:
             tags: 1
@@ -54,17 +57,6 @@ Meteor.publish 'people', (selected_tags)->
 
 
 
-
-
-Meteor.publish 'my_profile', ->
-    Meteor.users.find @userId,
-        fields:
-            tags: 1
-            username: 1
-            image_id: 1
-            name: 1
-
-
 Meteor.publish 'user_profile', (id)->
     Meteor.users.find id,
         fields:
@@ -72,6 +64,8 @@ Meteor.publish 'user_profile', (id)->
             username: 1
             image_id: 1
             name: 1
+            profile: 1
+            emails: 1
 
 AccountsMeld.configure
     askBeforeMeld: false

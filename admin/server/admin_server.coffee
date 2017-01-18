@@ -11,3 +11,5 @@ Meteor.publish 'hub_users', ->
             roles: 1
             emails: 1
             profile: 1
+            image_id: 1
+            checked_in: 1
