@@ -8,7 +8,7 @@ Template.edit_profile.helpers
     ten_tags: -> @tags?.length is 10
 
 
-    profile: -> Meteor.users.findOne FlowRouter.getParam('user_id')
+    user: -> Meteor.users.findOne FlowRouter.getParam('user_id')
 
 Template.edit_profile.events
     'blur #name': ->

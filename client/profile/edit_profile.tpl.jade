@@ -1,8 +1,10 @@
 .ui.segment.text.container
     h3.ui.center.aligned.header Edit Profile 
-    with profile
+    with user
         .ui.form
             .field
+                if profile.image_id
+                    p Old: #{profile.image_id}
                 if image_id
                     label Image
                     .ui.centered.image
@@ -13,11 +15,15 @@
                     label Upload Image
                     input(type='file' name='upload_picture' accept='image/*')
             .field
-                label Name
+                label Name (#{profile.name})
                 .ui.input
                     input#name(type='text' value=name)
             .field
                 label Choose up to ten tags to describe your personal/professional life
+                if profile.tags
+                    .ui.segment
+                        each profile.tags
+                            .ui.basic.label #{this}
                 each tags
                     .ui.small.compact.button.person_tag
                         i.minus.icon
