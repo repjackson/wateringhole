@@ -12,8 +12,9 @@ template(name='layout')
 
 template(name='people')
     .ui.container
-        each people
-            +card
+        .ui.four.stackable.cards
+            each people
+                +card
 
 
             

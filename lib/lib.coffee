@@ -9,7 +9,7 @@ FlowRouter.route '/',
             main: 'people'
 
 
-FlowRouter.route '/profile/edit/', action: (params) ->
+FlowRouter.route '/profile/edit/:user_id', action: (params) ->
     BlazeLayout.render 'layout',
         # sub_nav: 'account_nav'
         main: 'edit_profile'

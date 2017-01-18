@@ -1,0 +1,7 @@
+.ui.card
+    .image
+        img.ui.fluid.image(src="{{c.url image_id height=400 width=800 background='white' crop='pad'}}")
+    .content
+        h2.ui.center.aligned.header #{name}
+        each five_tags
+            .ui.compact.tiny.button.person_tag(class=tag_class) #{this}
