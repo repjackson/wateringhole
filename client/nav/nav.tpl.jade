@@ -1,23 +1,11 @@
-.ui.inverted.teal.menu
-    a.ui.active.header.inverted.item(href='/') 
-        i.theme.icon
+.ui.inverted.menu
+    a.ui.header.inverted.item(href='/') 
         |Watering Hole
-    a.ui.item(href='/members' class="{{isActivePath '/members'}}") 
-        i.users.icon
-        |Members
-    a.ui.item(href='/events' class="{{isActivePath '/events'}}")
-        i.calendar.icon
-        |Events
-    // .ui.icon.input.item
-    //     +inputAutocomplete settings=settings id="search" class="" autofocus='' placeholder='Search....' autocomplete="off"
     .right.menu
         if currentUser
             a.item(href='/admin/content' class="{{isActivePath '/admin/'}}")
                 i.configure.icon
                 | Admin
-            a.item(href="/messages" class="{{isActivePath '/messages'}}")
-                i.envelope.icon
-                | Messages
             a.item(href="/profile/edit" class="{{isActivePath '/profile/edit'}}")
                 if currentUser.profile.image_id
                     img.ui.avatar.image(src="{{c.url currentUser.profile.image_id width=30 height=30 gravity='face' crop='fill'}}")

@@ -7,16 +7,13 @@ head
 template(name='layout')
     +nav
     +Template.dynamic template=cloud
-    +Template.dynamic template=sub_nav
     +Template.dynamic template=main
 
 
 template(name='people')
     .ui.container
         each people
-            +person
+            +card
 
 
-                    
-template(name='tag_result')
-    .ui.small.compact.button #{name}
+            

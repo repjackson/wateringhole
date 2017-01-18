@@ -6,56 +6,16 @@ Template.edit_profile.onCreated ->
 
 Template.edit_profile.helpers
     ten_tags: -> @tags?.length is 10
-    # person: -> Meteor.users.findOne FlowRouter.getParam('user_id')
-
-    # matchedUsersList:->
-    #     users = Meteor.users.find({_id: $ne: Meteor.userId()}).fetch()
-    #     userMatches = []
-    #     for user in users
-    #         tagIntersection = _.intersection(user.tags, Meteor.user().tags)
-    #         userMatches.push
-    #             matchedUser: user.username
-    #             tagIntersection: tagIntersection
-    #             length: tagIntersection.length
-    #     sortedList = _.sortBy(userMatches, 'length').reverse()
-    #     return sortedList
-
 
 
 Template.edit_profile.events
-    'click #save_profile': ->
-        FlowRouter.go "/view/#{Meteor.userId()}"
-
     'blur #name': ->
         name = $('#name').val()
         Meteor.users.update Meteor.userId(),
-            $set: "profile.name": name
-            
-    'blur #link': ->
-        link = $('#link').val()
-        Meteor.users.update Meteor.userId(),
-            $set: "profile.link": link
-            
-    'blur #location': ->
-        location = $('#location').val()
-        Meteor.users.update Meteor.userId(),
-            $set: "profile.location": location
+            $set: name: name
+        
             
             
-            
-            
-            
-    'blur #personal_bio': ->
-        personal_bio = $('#personal_bio').val()
-        Meteor.users.update Meteor.userId(),
-            $set: "profile.personal_bio": personal_bio
-            
-    'blur #pro_bio': ->
-        pro_bio = $('#pro_bio').val()
-        Meteor.users.update Meteor.userId(),
-            $set: "profile.pro_bio": pro_bio
-            
-
     'keydown #add_tag': (e,t)->
         if e.which is 13
             tag = $('#add_tag').val().toLowerCase().trim()
@@ -84,7 +44,7 @@ Template.edit_profile.events
                     console.error 'Error uploading', err
                 else
                     Meteor.users.update Meteor.userId(),
-                        $set: "profile.image_id": res.public_id
+                        $set: image_id: res.public_id
                 return
 
     'click #pick_google_image': ->
@@ -111,5 +71,5 @@ Template.edit_profile.events
 
     'click #remove_photo': ->
         Meteor.users.update Meteor.userId(),
-            $unset: "profile.image_id": 1
+            $unset: image_id: 1
             
