@@ -1,0 +1,17 @@
+.ui.container.segment
+    // .ui.center.aligned.header View Profile
+    with person
+        img.ui.centered.large.image(src="{{c.url image_id width=800 height=600 gravity='face' crop='fill'}}")
+        h2.ui.header
+            |#{name}
+        +check_in_button
+        .ui.hidden.divider
+        if tags
+            i.large.tags.icon
+            each tags
+                .ui.basic.label #{this}
+        .ui.horizontal.divider.header
+            i.red.configure.icon
+            | Admin
+        +timecard
+                

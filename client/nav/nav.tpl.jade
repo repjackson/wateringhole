@@ -2,9 +2,9 @@
     a.ui.header.inverted.item(href='/') 
         |Watering Hole
     .right.menu
-        a.item(href='/admin' class="{{isActivePath '/admin/'}}")
-            i.configure.icon
-            | Admin
+        // a.item(href='/admin' class="{{isActivePath '/admin/'}}")
+        //     i.configure.icon
+        //     | Admin
         if currentUser
             a.item(href="/profile/edit/#{currentUser._id}" )
                 if currentUser.profile.image_id

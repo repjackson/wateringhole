@@ -18,7 +18,7 @@ Meteor.publish 'tags', (selected_tags)->
     match = {}
     if selected_tags.length > 0 then match.tags = $all: selected_tags
     match._id = $ne: @userId
-    match.checked_in = true
+    # match.checked_in = true
 
     cloud = Meteor.users.aggregate [
         { $match: match }
@@ -46,7 +46,7 @@ Meteor.publish 'people', (selected_tags)->
     if selected_tags.length > 0 then match.tags = $all: selected_tags
     # match.tags = $all: selected_tags
     match._id = $ne: @userId
-    match.checked_in = true
+    # match.checked_in = true
     
     Meteor.users.find match,
         fields:
@@ -54,10 +54,12 @@ Meteor.publish 'people', (selected_tags)->
             username: 1
             image_id: 1
             name: 1
+            emails: 1
+            checked_in: 1
 
 
 
-Meteor.publish 'user_profile', (id)->
+Meteor.publish 'profile', (id)->
     Meteor.users.find id,
         fields:
             tags: 1
@@ -66,6 +68,7 @@ Meteor.publish 'user_profile', (id)->
             name: 1
             profile: 1
             emails: 1
+            checked_in: 1
 
 AccountsMeld.configure
     askBeforeMeld: false

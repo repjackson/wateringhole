@@ -1,7 +1,18 @@
 .ui.card
     .image
-        img.ui.fluid.image(src="{{c.url image_id height=400 width=800 background='white' crop='pad'}}")
+        a(href="/profile/view/#{_id}")
+            img.ui.fluid.image(src="{{c.url image_id height=400 width=800 background='white' crop='pad'}}")
     .content
-        h2.ui.center.aligned.header #{name}
+        a(href="/profile/view/#{_id}")
+            h2.ui.center.aligned.header #{name}
         each five_tags
             .ui.compact.tiny.button.person_tag(class=tag_class) #{this}
+    .extra.content
+        if checked_in
+            .check_out.ui.basic.compact.small.button
+                i.red.remove.icon
+                |Check Out 
+        else
+            .check_in.ui.basic.compact.small.button
+                i.green.check.icon
+                |Check In 

@@ -1,5 +1,5 @@
 Template.view_profile.onCreated ->
-    @autorun -> Meteor.subscribe('view_profile', FlowRouter.getParam('user_id'))
+    @autorun -> Meteor.subscribe('profile', FlowRouter.getParam('user_id'))
     
 
 Template.view_profile.helpers

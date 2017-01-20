@@ -1,13 +1,12 @@
 
 Template.edit_profile.onCreated ->
-    @autorun -> Meteor.subscribe 'user_profile', FlowRouter.getParam('user_id') 
+    @autorun -> Meteor.subscribe 'profile', FlowRouter.getParam('user_id') 
 
-Template.edit_profile.onRendered ->
-    console.log Meteor.users.findOne(FlowRouter.getParam('user_id'))
+# Template.edit_profile.onRendered ->
+#     console.log Meteor.users.findOne(FlowRouter.getParam('user_id'))
 
 Template.edit_profile.helpers
     ten_tags: -> @tags?.length is 10
-
 
     user: -> Meteor.users.findOne FlowRouter.getParam('user_id')
 
