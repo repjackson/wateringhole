@@ -8,11 +8,4 @@
         each five_tags
             .ui.compact.tiny.button.person_tag(class=tag_class) #{this}
     .extra.content
-        if checked_in
-            .check_out.ui.basic.compact.small.button
-                i.red.remove.icon
-                |Check Out 
-        else
-            .check_in.ui.basic.compact.small.button
-                i.green.check.icon
-                |Check In 
+        +check_in_button

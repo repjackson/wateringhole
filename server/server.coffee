@@ -77,6 +77,8 @@ Meteor.publish 'profile', (id)->
             checked_in: 1
             monthly_day_usage: 1
             checkins_this_month: 1
+            member_status: 1
+            day_allotment: 1
 
 AccountsMeld.configure
     askBeforeMeld: false

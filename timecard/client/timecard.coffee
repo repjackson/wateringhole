@@ -20,6 +20,8 @@ Template.timecard.helpers
         now = Date.now()
         moment(now).format('MMMM')
 
+    monthly_day_comparison: -> @day_allotment - @monthly_day_usage
+
 
 Template.timecard.events
     'click .delete_entry': ->
