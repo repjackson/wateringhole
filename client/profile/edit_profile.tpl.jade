@@ -3,11 +3,11 @@
     with user
         .ui.form
             .field
-                if profile.image_id
-                    p Old: #{profile.image_id}
-                .field
-                    label Current image_id: #{image_id}
-                    input#input_image_id(type='text' placeholder='Change')
+                // if profile.image_id
+                //     p Old: #{profile.image_id}
+                // .field
+                //     label Current image_id: #{image_id}
+                //     input#input_image_id(type='text' placeholder='Change')
                 if image_id
                     label Image
                     .ui.centered.image
@@ -41,6 +41,8 @@
                 .ui.left.icon.input
                     i.add.icon
                     input#add_tag(type='text' placeholder='Press enter after each tag' maxlength='30')
+            // .ui.segment
+            //     +atForm
             .field
                 .ui.center.aligned.basic.segment
                     a#save_profile.ui.center.aligned.green.button(href='/')
