@@ -18,7 +18,9 @@
                     label Upload Image
                     input(type='file' name='upload_picture' accept='image/*')
             .field
-                label Name (#{profile.name})
+                label Name 
+                    if profile.name
+                        |(#{profile.name})
                 .ui.input
                     input#name(type='text' value=name)
             .field
@@ -26,7 +28,7 @@
                 each emails
                     .ui.basic.label #{this}
             .field
-                label Choose up to ten tags to describe your personal/professional life
+                label Tags
                 if profile.tags
                     .ui.segment
                         each profile.tags
@@ -35,10 +37,10 @@
                     .ui.small.compact.button.person_tag
                         i.minus.icon
                         |#{this}
-                unless ten_tags
-                    .ui.left.icon.input
-                        i.add.icon
-                        input#add_tag(type='text' placeholder='Press enter after each tag' maxlength='30')
+                // unless ten_tags
+                .ui.left.icon.input
+                    i.add.icon
+                    input#add_tag(type='text' placeholder='Press enter after each tag' maxlength='30')
             .field
                 .ui.center.aligned.basic.segment
                     a#save_profile.ui.center.aligned.green.button(href='/')

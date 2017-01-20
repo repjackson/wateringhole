@@ -12,9 +12,20 @@ Template.edit_profile.helpers
 
 Template.edit_profile.events
     'blur #name': ->
+        old_name_tags = @name_tags
+        # console.log old_name_tags
         name = $('#name').val()
+        split_name = name.match(/\S+/g)
+        
         Meteor.users.update FlowRouter.getParam('user_id'),
-            $set: name: name
+            $pullAll: tags: old_name_tags
+                
+        Meteor.users.update FlowRouter.getParam('user_id'),
+            $set: 
+                name: name
+                name_tags: split_name
+            $addToSet: tags: $each: split_name
+            
         
     'keydown #input_image_id': (e,t)->
         if e.which is 13
