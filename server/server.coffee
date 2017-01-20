@@ -1,3 +1,9 @@
+Docs.allow
+    insert: (userId, doc) -> doc.author_id is userId
+    update: (userId, doc) -> doc.author_id is userId or Roles.userIsInRole(userId, 'admin')
+    remove: (userId, doc) -> doc.author_id is userId or Roles.userIsInRole(userId, 'admin')
+
+
 Meteor.users.allow
     update: (userId, doc, fields, modifier) ->
         true
@@ -69,6 +75,8 @@ Meteor.publish 'profile', (id)->
             profile: 1
             emails: 1
             checked_in: 1
+            monthly_day_usage: 1
+            checkins_this_month: 1
 
 AccountsMeld.configure
     askBeforeMeld: false

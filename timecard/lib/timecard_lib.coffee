@@ -6,8 +6,9 @@ Meteor.methods
         Docs.insert 
             author_id: user_id
             type: 'timecard'
-            timestamp: Date.now()
+            timestamp: new Date()
             tags: ['timecard', user.name, 'in', Date.now()]
+        Meteor.call 'calculate_user_totals', user_id
 
 
     'check_out_user': (user_id) ->
@@ -17,5 +18,6 @@ Meteor.methods
         Docs.insert 
             author_id: user_id
             type: 'timecard'
-            timestamp: Date.now()
+            timestamp: new Date()
             tags: ['timecard', user.name, 'out', Date.now()]
+        Meteor.call 'calculate_user_totals', user_id

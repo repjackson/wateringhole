@@ -24,7 +24,7 @@
     "input": true,
     "item": true,
     "label": true,
-    "list": false,
+    "list": true,
     "loader": true,
     "menu": true,
     "message": true,

@@ -1,8 +1,25 @@
-.ui.horizontal.divider.header Timecard
-ul.ui.divided.list
-    each logs
-        .item
-            .header #{timestamp}
-            .meta
-                each tags 
-                    .ui.basic.label #{this}
+.ui.segment
+    .ui.horizontal.divider.header 
+        i.wait.icon
+        |Timecard
+    ul.ui.divided.list
+        each logs
+            .item
+                .center.aligned.header
+                    if is_in
+                        i.green.sign.in.big.icon
+                    |#{date_format}
+                    unless is_in
+                        i.red.sign.out.big.icon
+                span.right.floated
+                    .ui.compact.icon.button.delete_entry
+                        i.red.remove.icon
+                // .meta
+                //     each tags 
+                //         .ui.basic.label #{this}
+    .ui.horizontal.divider.header Totals
+    .ui.header Days checked in this month: #{monthly_day_usage}
+    // .ui.header Check-ins this month: #{checkins_this_month}
+    // .ui.header Total Time this month
+    // p This Month: #{this_month}
+    

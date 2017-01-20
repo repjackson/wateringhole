@@ -32,7 +32,7 @@ Template.check_in_button.events
             animation: false
             showCancelButton: true
             # confirmButtonColor: '#DD6B55'
-            confirmButtonText: 'Check In'
+            confirmButtonText: 'Check Out'
             closeOnConfirm: false
         }, ->
             Meteor.call 'check_out_user', self._id, ->
