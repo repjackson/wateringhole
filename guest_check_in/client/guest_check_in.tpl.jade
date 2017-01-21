@@ -1,13 +1,18 @@
 .ui.container
-    .ui.header Guest Check In
-    .ui.form
+    h1.ui.center.aligned.header Guest Check In
+    .ui.huge.form
         .field
             label Name
-            input(type='text')
+            .ui.left.icon.input
+                +inputAutocomplete settings=name_settings id="search" class="" autocomplete="off" 
         .field
             label Email
             input(type='email')
         .field
             label Associated Member
             input(type='text')
-            
+    .ui.center.aligned.basic.segment
+        .ui.center.aligned.green.button
+            |Check In
+            i.right.arrow.icon
+                            

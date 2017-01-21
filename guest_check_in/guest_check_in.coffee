@@ -6,31 +6,38 @@ FlowRouter.route '/guest-check-in', action: (params) ->
 
 if Meteor.isClient
     Template.guest_check_in.onCreated ->
-        # self = @
-        # self.autorun ->
-        #     self.subscribe 'timecard', FlowRouter.getParam('user_id')
+        self = @
+        self.autorun ->
+            self.subscribe 'user_names'
     
     
     
     
     Template.guest_check_in.helpers
-        # logs: ->
-        #     Docs.find {},
-        #         sort: timestamp: -1
-            
-        # date_format: ->
-        #     moment(@timestamp).format('dddd, MMMM Do YYYY, h:mm a')
-            
-        # is_in: -> 'in' in @tags
-    
-        # this_month: ->
-        #     now = Date.now()
-        #     moment(now).format('MMMM')
-    
-        # monthly_day_comparison: -> @day_allotment - @monthly_day_usage
-    
-    
+        name_settings: -> {
+            position: 'bottom'
+            limit: 10
+            rules: [
+                {
+                    collection: Meteor.users
+                    field: 'name'
+                    matchAll: true
+                    template: Template.tag_result
+                }
+                ]
+        }
+        
+        
+        
     Template.guest_check_in.events
         # 'click .delete_entry': ->
         #     if confirm 'Delete Entry?'
         #         Docs.remove @_id
+        
+        
+        
+if Meteor.isServer
+    Meteor.publish 'user_names', ->
+        Meteor.users.find {},
+            field: 
+                name: 1

@@ -1,13 +1,17 @@
 .ui.container
-    .ui.header Member Check In
-    .ui.form
+    h1.ui.center.aligned.header Member Check In
+    .ui.huge.form
+        if selection
+            img.ui.centered.large.image(src="{{c.url selection_image_id width=800 height=600 gravity='face' crop='fill'}}")
         .field
             label Name
-            input(type='text')
-        .field
-            label Email
-            input(type='email')
-        .field
-            label Associated Member
-            input(type='text')
-            
+            .ui.left.icon.input
+                +inputAutocomplete settings=member_name_settings id="member_name" class="" autocomplete="off" 
+        // .field
+        //     label Email
+        //     input(type='email')
+    .ui.center.aligned.basic.segment
+        #check_in_member.ui.center.aligned.green.button(class=submit_button_class)
+            |Check In
+            i.right.arrow.icon
+                

@@ -1,7 +1,7 @@
 Template.cloud.helpers
     all_tags: ->
         user_count = Meteor.users.find( _id: $ne: Meteor.userId() ).count()
-        if 0 < user_count < 3 then Tags.find({ count: $lt: user_count }, {limit:20}) else Tags.find({}, limit:20)
+        if 0 < user_count < 3 then Tags.find({ count: $lt: user_count }, {limit:10}) else Tags.find({}, limit:10)
 
     cloud_tag_class: ->
         button_class = switch
