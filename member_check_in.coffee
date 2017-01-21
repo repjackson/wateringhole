@@ -14,6 +14,8 @@ if Meteor.isClient
             self.subscribe 'user_names'
             self.subscribe 'profile', Session.get 'selected_member_id'
     
+    Template.member_check_in.onCreated ->
+        Session.set 'selected_member_id', null
     
     
     Template.member_check_in.helpers
@@ -37,14 +39,34 @@ if Meteor.isClient
         
         selection_image_id: ->
             if Session.get 'selected_member_id'
-                Meteor.users.findOne(Session.get('selected_member_id')).image_id
+                Meteor.users.findOne(Session.get('selected_member_id'))?.image_id
     
     
     Template.member_check_in.events
         'click #check_in_member': ->
-            console.log $('#member_name').val()
+            name = $('#member_name').val()
+            user = Meteor.users.findOne name: name
+            console.log user
+            
+            Meteor.call 'check_in_user', user._id, ->
+                swal {
+                    title: 'Logged In'
+                    animation: false
+                    type: 'success'
+                    showCancelButton: false
+                    # confirmButtonColor: '#DD6B55'
+                    confirmButtonText: 'Ok'
+                    closeOnConfirm: true
+                    }, ->
+                        FlowRouter.go "/profile/view/#{user._id}"
+                
             
             
         'autocompleteselect #member_name': (event, template, doc) ->
             # console.log 'selected ', doc
             Session.set 'selected_member_id', doc._id
+
+        'click #clear_selection': ->
+            $('#member_name').val('')
+            Session.clear 'selected_member_id'
+            

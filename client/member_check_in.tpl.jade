@@ -5,8 +5,10 @@
             img.ui.centered.large.image(src="{{c.url selection_image_id width=800 height=600 gravity='face' crop='fill'}}")
         .field
             label Name
-            .ui.left.icon.input
-                +inputAutocomplete settings=member_name_settings id="member_name" class="" autocomplete="off" 
+            #clear_selection.ui.right.icon.input
+                +inputAutocomplete settings=member_name_settings id="member_name" class="" autocomplete="off"
+                if $.Session.get 'selected_member_id'
+                    i.circular.remove.link.icon
         // .field
         //     label Email
         //     input(type='email')
