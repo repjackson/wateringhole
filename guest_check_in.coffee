@@ -14,7 +14,21 @@ if Meteor.isClient
     
     
     Template.guest_check_in.helpers
-        name_settings: -> {
+        guest_name_settings: -> {
+            position: 'bottom'
+            limit: 10
+            rules: [
+                {
+                    collection: Meteor.users
+                    field: 'name'
+                    matchAll: true
+                    filter: member_status: 'guest'
+                    template: Template.tag_result
+                }
+                ]
+        }
+        
+        associated_member_name_settings: -> {
             position: 'bottom'
             limit: 10
             rules: [
@@ -37,7 +51,7 @@ if Meteor.isClient
         
         
 if Meteor.isServer
-    Meteor.publish 'user_names', ->
-        Meteor.users.find {},
+    Meteor.publish 'guest_names', ->
+        Meteor.users.find { member_status: 'guest' },
             field: 
                 name: 1

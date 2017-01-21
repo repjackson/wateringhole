@@ -80,7 +80,14 @@ Meteor.publish 'profile', (id)->
             member_status: 1
             day_allotment: 1
 
+Meteor.publish 'user_names', ->
+    Meteor.users.find {},
+        fields: 
+            name: 1
+            member_status: 1
+
 AccountsMeld.configure
     askBeforeMeld: false
     # meldDBCallback: meldDBCallback
     # serviceAddedCallback: serviceAddedCallback
+
