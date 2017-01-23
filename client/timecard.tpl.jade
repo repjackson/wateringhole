@@ -2,6 +2,7 @@
     .ui.horizontal.divider.header 
         i.wait.icon
         |Timecard
+    +check_in_button
     ul.ui.divided.list
         each logs
             .item
@@ -12,8 +13,7 @@
                     unless is_in
                         i.red.sign.out.big.icon
                 span.right.floated
-                    .ui.compact.icon.button.delete_entry
-                        i.red.remove.icon
+                    i.red.remove.link.icon.delete_entry
                 // .meta
                 //     each tags 
                 //         .ui.basic.label #{this}

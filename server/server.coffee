@@ -62,6 +62,7 @@ Meteor.publish 'people', (selected_tags)->
             name: 1
             emails: 1
             checked_in: 1
+            profile: 1
 
 
 
