@@ -1,6 +1,6 @@
 if Meteor.isClient
     Template.card.helpers
-        tag_class: -> if @valueOf() in selected_tags.array() then 'primary' else ''
+        tag_class: -> if @valueOf() in selected_tags.array() then 'primary' else 'basic'
     
     
         five_tags: -> if @tags then @tags[..4]

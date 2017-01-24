@@ -6,9 +6,9 @@ if Meteor.isClient
     
         cloud_tag_class: ->
             button_class = switch
-                when @index <= 5 then ''
-                when @index <= 12 then 'small'
-                when @index <= 20 then 'tiny'
+                when @index <= 5 then 'large'
+                when @index <= 12 then ''
+                when @index <= 20 then 'small'
             return button_class
     
         selected_tags: -> selected_tags.list()

@@ -6,6 +6,10 @@
             .ten.wide.column
                 h2.ui.header
                     |#{profile.first_name} #{profile.last_name}
+                .ui.header
+                    |Position: #{profile.position}
+                .ui.header
+                    |Company: #{profile.company}
                 .ui.hidden.divider
                 if tags
                     i.large.tags.icon

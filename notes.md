@@ -43,11 +43,31 @@ db.users.find({ profile: {$exists:true} }).forEach(
 )
 
 
-<!--lasdt name-->
-db.users.find({ profile: {$exists:true} }).forEach(
+<!--tags-->
+db.users.find({ profile: {$exists:true}, "profile.tags":{$exists:true} }).forEach(
     function(doc) {
         split_tags = doc.profile.tags[0].toLowerCase().split(",");
         doc.tags = split_tags;
+        db.users.save(doc);
+    }
+)
+
+
+<!--remove whitespace tag-->
+db.users.find({ tags: {$exists:true} }).forEach(
+    function(doc) {
+        doc.tags = doc.tags.filter(function(str) {
+            return /\S/.test(str);
+        });
+        db.users.save(doc);
+    }
+)
+
+
+<!--trim tags-->
+db.users.find({ tags: {$exists:true} }).forEach(
+    function(doc) {
+        doc.tags = doc.tags.map(function(s) { return s.trim() });
         db.users.save(doc);
     }
 )
@@ -59,6 +79,29 @@ db.users.find({ profile: {$exists:true} }).forEach(
         db.users.save(doc);
     }
 )
+
+
+<!--company-->
+db.users.find({ profile: {$exists:true} }).forEach(
+    function(doc) {
+        doc.profile.company = doc["profile"]["COMPANY"];
+        db.users.save(doc);
+    }
+)
+
+
+<!--position-->
+db.users.find({ profile: {$exists:true} }).forEach(
+    function(doc) {
+        doc.profile.position = doc["profile"]["JOB TITLE"];
+        db.users.save(doc);
+    }
+)
+
+
+
+
+
 
 
 <!--image-->
