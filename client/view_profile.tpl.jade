@@ -6,6 +6,10 @@
             .ten.wide.column
                 h2.ui.header
                     |#{profile.first_name} #{profile.last_name}
+                if tags
+                    i.large.tags.icon
+                    each tags
+                        .ui.basic.label #{this}
                 if profile.position
                     .ui.header Position 
                     | #{profile.position}
@@ -16,21 +20,16 @@
                     .ui.header Website 
                     a(href=profile.website target='_blank') #{profile.website}
                 if profile.pro_bio
-                    .ui.header Bio
+                    .ui.header What Working On / Interest in Social Change
                     |#{profile.pro_bio}
                 if profile.needs
                     .ui.header Needs
                     |#{profile.needs}
-                .ui.hidden.divider
-                if tags
-                    i.large.tags.icon
-                    each tags
-                        .ui.basic.label #{this}
             .six.wide.column
                 .ui.horizontal.divider.header
                     i.red.configure.icon
                     | Admin
-                // +check_in_button
+                +edit_profile_button
                 +member_status
                 +timecard
                         

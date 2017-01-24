@@ -36,9 +36,23 @@
                 .ui.input
                     input#position(type='text' value=profile.position)
             .field
+                label Website 
+                .ui.input
+                    input#website(type='text' value=profile.website)
+            .field
+                label What Working On / Interest in Social Change 
+                .ui.input
+                    textarea#pro_bio(type='textarea' rows='2')
+                        |#{profile.pro_bio}
+            .field
+                label Needs 
+                .ui.input
+                    textarea#needs(type='textarea' rows='2')
+                        |#{profile.needs}
+            .field
                 label Tags
                 each tags
-                    .ui.small.basic.button.person_tag
+                    .ui.small.basic.circular.button.person_tag
                         i.minus.icon
                         |#{this}
                 // unless ten_tags
@@ -46,7 +60,9 @@
                     i.add.icon
                     input#add_tag(type='text' placeholder='Press enter after each tag' maxlength='30')
             .ui.segment
-                .ui.header Private
+                .ui.header 
+                    i.hide.icon
+                    |Private
                 .field
                     label Phone 
                     .ui.input
@@ -55,5 +71,5 @@
                 +atForm
             .field
                 .ui.center.aligned.basic.segment
-                    a#save_profile.ui.center.aligned.green.button(href='/')
+                    #save_profile.ui.center.aligned.huge.green.button
                         |Save

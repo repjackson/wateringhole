@@ -52,6 +52,13 @@ if Meteor.isClient
             Meteor.users.update FlowRouter.getParam('user_id'),
                 $set: 
                     "profile.position": position
+        
+        
+        'blur #website': ->
+            website = $('#website').val().trim()
+            Meteor.users.update FlowRouter.getParam('user_id'),
+                $set: 
+                    "profile.website": website
 
             
         'blur #phone': ->
@@ -59,6 +66,20 @@ if Meteor.isClient
             Meteor.users.update FlowRouter.getParam('user_id'),
                 $set: 
                     "profile.phone": phone
+
+            
+        'blur #pro_bio': ->
+            pro_bio = $('#pro_bio').val().trim()
+            Meteor.users.update FlowRouter.getParam('user_id'),
+                $set: 
+                    "profile.pro_bio": pro_bio
+
+            
+        'blur #needs': ->
+            needs = $('#needs').val().trim()
+            Meteor.users.update FlowRouter.getParam('user_id'),
+                $set: 
+                    "profile.needs": needs
 
             
             
@@ -86,7 +107,8 @@ if Meteor.isClient
                 $pull: tags: tag
             $('#add_tag').val(tag)
     
-    
+        'click #save_profile': ->
+            FlowRouter.go "/profile/view/#{@_id}"
     
         "change input[type='file']": (e) ->
             files = e.currentTarget.files
