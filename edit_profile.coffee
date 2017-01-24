@@ -26,6 +26,41 @@ if Meteor.isClient
                     name_tags: split_name
                 $addToSet: tags: $each: split_name
                 
+        'blur #first_name': ->
+            first_name = $('#first_name').val().trim()
+            Meteor.users.update FlowRouter.getParam('user_id'),
+                $set: 
+                    "profile.first_name": first_name
+
+            
+        'blur #last_name': ->
+            last_name = $('#last_name').val().trim()
+            Meteor.users.update FlowRouter.getParam('user_id'),
+                $set: 
+                    "profile.last_name": last_name
+
+            
+        'blur #company': ->
+            company = $('#company').val().trim()
+            Meteor.users.update FlowRouter.getParam('user_id'),
+                $set: 
+                    "profile.company": company
+
+            
+        'blur #position': ->
+            position = $('#position').val().trim()
+            Meteor.users.update FlowRouter.getParam('user_id'),
+                $set: 
+                    "profile.position": position
+
+            
+        'blur #phone': ->
+            phone = $('#phone').val().trim()
+            Meteor.users.update FlowRouter.getParam('user_id'),
+                $set: 
+                    "profile.phone": phone
+
+            
             
         'keydown #input_image_id': (e,t)->
             if e.which is 13

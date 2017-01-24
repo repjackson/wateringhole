@@ -140,6 +140,15 @@ db.users.find({ profile: {$exists:true} }).forEach(
 )
 
 
+<!--phone-->
+db.users.find({ profile: {$exists:true} }).forEach(
+    function(doc) {
+        doc.profile.phone = doc["profile"]["PHONE"];
+        db.users.save(doc);
+    }
+)
+
+
 
 
 
