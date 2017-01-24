@@ -1,4 +1,15 @@
 if Meteor.isClient
+    
+    Template.cloud.onCreated ->
+        @autorun -> Meteor.subscribe 'tags', selected_tags.array()
+        @autorun -> Meteor.subscribe 'me'
+        # @autorun -> Meteor.subscribe 'usernames'
+    
+    
+
+    
+    
+    
     Template.cloud.helpers
         all_tags: ->
             user_count = Meteor.users.find( _id: $ne: Meteor.userId() ).count()

@@ -34,7 +34,20 @@ db.users.find({ profile: {$exists:true} }).forEach(
     }
 )
 
-<!--lasdt name-->
+
+<!--add first name to tags-->
+db.users.find({ "profile.first_name": {$exists:true} }).forEach(
+    function(doc) {
+        found_first = doc.profile.first_name;
+        if(found_first){
+            first = doc.profile.first_name.toLowerCase();
+            doc.tags.push(first);
+            db.users.save(doc);
+        }
+    }
+)
+
+<!--last name-->
 db.users.find({ profile: {$exists:true} }).forEach(
     function(doc) {
         doc.profile.last_name = doc["profile"]["LAST NAME"];
@@ -80,6 +93,14 @@ db.users.find({ profile: {$exists:true} }).forEach(
     }
 )
 
+<!--member status-->
+db.users.find({ profile: {$exists:true} }).forEach(
+    function(doc) {
+        doc.member_type = doc["profile"]["MEMB TYPE"];
+        db.users.save(doc);
+    }
+)
+
 
 <!--company-->
 db.users.find({ profile: {$exists:true} }).forEach(
@@ -97,6 +118,50 @@ db.users.find({ profile: {$exists:true} }).forEach(
         db.users.save(doc);
     }
 )
+
+
+
+
+<!--lowercase website-->
+db.users.find({ profile: {$exists:true} }).forEach(
+    function(doc) {
+        doc.profile.website = doc["WEBSITE"];
+        db.users.save(doc);
+    }
+)
+
+
+<!--needs-->
+db.users.find({ profile: {$exists:true} }).forEach(
+    function(doc) {
+        doc.profile.needs = doc["profile"]["NEEDS"];
+        db.users.save(doc);
+    }
+)
+
+
+
+
+
+<!--lowercase website-->
+db.users.find({ profile: {$exists:true} }).forEach(
+    function(doc) {
+        doc.profile.website = doc["profile"]["WEBSITE"];
+        db.users.save(doc);
+    }
+)
+
+
+<!--what working on-->
+db.users.find({ profile: {$exists:true} }).forEach(
+    function(doc) {
+        doc.profile.pro_bio = doc["profile"]["WHAT WORKING ON / INTEREST IN SOCIAL CHANGE"];
+        db.users.save(doc);
+    }
+)
+
+
+db.users.update( { }, { $unset: { "profile.website": 1 } }, { multi: true } )
 
 
 

@@ -63,6 +63,8 @@ Meteor.publish 'people', (selected_tags)->
             emails: 1
             checked_in: 1
             profile: 1
+        ,
+        limit: 4
 
 
 
@@ -80,6 +82,7 @@ Meteor.publish 'profile', (id)->
             checkins_this_month: 1
             member_status: 1
             day_allotment: 1
+            member_type: 1
 
 Meteor.publish 'user_names', ->
     Meteor.users.find {},

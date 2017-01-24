@@ -6,10 +6,21 @@
             .ten.wide.column
                 h2.ui.header
                     |#{profile.first_name} #{profile.last_name}
-                .ui.header
-                    |Position: #{profile.position}
-                .ui.header
-                    |Company: #{profile.company}
+                if profile.position
+                    .ui.header Position 
+                    | #{profile.position}
+                if profile.company
+                    .ui.header Company
+                    | #{profile.company}
+                if profile.website
+                    .ui.header Website 
+                    a(href=profile.website target='_blank') #{profile.website}
+                if profile.pro_bio
+                    .ui.header Bio
+                    |#{profile.pro_bio}
+                if profile.needs
+                    .ui.header Needs
+                    |#{profile.needs}
                 .ui.hidden.divider
                 if tags
                     i.large.tags.icon
@@ -19,7 +30,7 @@
                 .ui.horizontal.divider.header
                     i.red.configure.icon
                     | Admin
-                +check_in_button
+                // +check_in_button
                 +member_status
                 +timecard
                         

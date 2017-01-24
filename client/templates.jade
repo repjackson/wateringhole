@@ -10,12 +10,6 @@ template(name='layout')
     +Template.dynamic template=main
 
 
-template(name='people')
-    .ui.container
-        .ui.four.stackable.cards
-            each people
-                +card
-
 
 template(name="tag_result")
     .ui.basic.label #{name}

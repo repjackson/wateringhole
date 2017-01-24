@@ -3,7 +3,7 @@ if Meteor.isClient
         'click .check_in': ->
             self = @
             swal {
-                title: "Check in #{self.name}?"
+                title: "Check in #{self.profile.first_name} #{self.profile.last_name}?"
                 # text: 'You will not be able to recover this imaginary file!'
                 type: 'warning'
                 animation: false
@@ -26,7 +26,7 @@ if Meteor.isClient
         'click .check_out': ->
             self = @
             swal {
-                title: "Check out #{self.name}?"
+                title: "Check out #{self.profile.first_name} #{self.profile.last_name}?"
                 # text: 'You will not be able to recover this imaginary file!'
                 type: 'warning'
                 animation: false
