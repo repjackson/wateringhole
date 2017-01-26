@@ -206,3 +206,32 @@ notes
 
 todo
     remote editing mode for guest that just checked in
+    
+    
+emmett meeting notes 1/24
+    fill out profiles
+    differentiate admin interface with clean user (kiosk mode/personal login?)
+    crm output
+    ways to fill out user tags
+    
+
+tori thoughts
+    check in tag
+    why just four people?  
+    points, tie in with actions at the hub
+        make being at the hub 
+        
+        
+my thoughts
+    love game concept, everything you do is for a purpose, thus has value, thus should be rewarded/incentivized
+    transaction goal is p2p, start with b2p, ie, get points (going to event, adding post) cash in with local business
+    business can provide coupon for people with certain tag points
+    
+    structure idea
+        add post, each upvote gets points
+        points can be used in the marketplace, not p2p at first, basically get stuff for participating
+        and have leaderboards
+        
+        
+ultimate goal
+    have people compete for points per tags
