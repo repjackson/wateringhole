@@ -15,7 +15,6 @@ mquandalle:jade
 random@1.0.10
 manuel:reactivearray
 meteorhacks:aggregate
-jquery@1.11.10
 babrahams:constellation
 mquandalle:stylus
 mobile-experience@1.0.4
@@ -48,3 +47,6 @@ accounts-google
 service-configuration
 raix:handlebar-helpers
 harrison:papa-parse
+pauli:accounts-linkedin
+matb33:collection-hooks
+froala:editor-reactive

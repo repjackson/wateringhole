@@ -1,0 +1,42 @@
+template(name='features')
+    .ui.container
+        h1.ui.horizontal.header.divider Features
+        #add_feature.ui.basic.circular.icon.button
+            i.green.plus.icon
+        +feature_cloud
+        +feature_cards
+        
+    
+    
+
+template(name='feature_cloud')
+    #cloud.ui.basic.segment.center.aligned.container
+        if selected_feature_tags
+            #clear_tags.ui.primary.icon.circular.large.button
+                i.remove.icon
+            each selected_feature_tags
+                .unselect_tag.ui.primary.circular.large.button
+                    strong #{this}
+        each feature_tags
+            .ui.circular.basic.button.select_tag(class=cloud_tag_class) 
+                strong #{this.name}
+
+
+template(name='feature_cards')
+    .ui.container
+        .ui.four.stackable.cards
+            each features
+                +feature_card
+
+
+
+template(name='feature_card')
+    .ui.card
+        .image
+            img.ui.fluid.image(src="{{c.url image_id height=400 width=800 background='white' crop='pad'}}")
+        .content
+            .ui.center.aligned.header #{title}
+            .description !{description}
+        .extra.content
+            a.ui.basic.circular.icon.button(href="/edit/#{_id}")
+                i.blue.pencil.icon

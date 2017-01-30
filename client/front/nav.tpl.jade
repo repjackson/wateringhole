@@ -1,0 +1,29 @@
+.ui.inverted.menu
+    a.header.item(href='/' class="{{isActivePath '/'}}")
+        h3 Watering Hole
+    a.item(href='/features' class="{{isActivePath '/features'}}") Features
+    // a.item(href='/faq' class="{{isActivePath '/faq'}}") FAQ
+    a.item(href='/#plans' class="{{isActivePath '/#plans'}}") Pricing
+    a.item(href='/about' class="{{isActivePath '/about'}}") About
+    .right.menu
+        if currentUser
+            if isInRole 'admin'
+                a.item(href='/admin/' class="{{isActivePath '/admin/'}}")
+                    i.configure.icon
+                    | Admin
+            a.item(href="/profile/edit" class="{{isActivePath '/profile/edit'}}")
+                if currentUser.profile.image_id
+                    img.ui.avatar.image(src="{{c.url currentUser.profile.image_id width=50 height=50 gravity='face' crop='fill'}}")
+                else
+                    i.user.icon
+                if currentUser.profile.name
+                    | #{currentUser.profile.name}
+                else
+                    | Profile
+            a#logout.ui.item(href='#') 
+                i.sign.out.icon
+                |Sign Out
+        else
+            a.ui.item(href='/sign-in') 
+                i.sign.in.icon
+                |Sign In

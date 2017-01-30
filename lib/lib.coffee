@@ -1,13 +1,28 @@
 @Tags = new Meteor.Collection 'tags'
-@Docs = new Meteor.Collection 'docs'
 
 
-FlowRouter.route '/',
-    name: 'home'
-    action: ->
-        BlazeLayout.render 'layout', 
-            cloud: 'cloud'
-            main: 'people'
+FlowRouter.route '/', action: ->
+    BlazeLayout.render 'layout', 
+        main: 'home'
+
+
+FlowRouter.route '/features', action: (params) ->
+    BlazeLayout.render 'layout',
+        main: 'features'
+
+FlowRouter.route '/faq', action: (params) ->
+    BlazeLayout.render 'layout',
+        main: 'faq'
+
+FlowRouter.route '/pricing', action: (params) ->
+    BlazeLayout.render 'layout',
+        main: 'pricing'
+
+FlowRouter.route '/about', action: (params) ->
+    BlazeLayout.render 'layout',
+        main: 'about'
+
+
 
 
 FlowRouter.route '/profile/edit/:user_id', action: (params) ->
