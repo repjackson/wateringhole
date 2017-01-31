@@ -2,7 +2,15 @@
     a.header.item(href='/' class="{{isActivePath '/'}}")
         h3 Watering Hole
     a.item(href='/features' class="{{isActivePath '/features'}}") Features
-    // a.item(href='/faq' class="{{isActivePath '/faq'}}") FAQ
+    a.item(href='/bulletin_board' class="{{isActivePath '/bulletin_board'}}") 
+        i.pin.icon
+        |Bulletin Board
+    a.item(href='/events' class="{{isActivePath '/events'}}")
+        i.calendar.icon
+        strong Events
+    a.item(href='/posts' class="{{isActivePath '/posts'}}")
+        i.newspaper.icon
+        strong Blog
     a.item(href='/#plans' class="{{isActivePath '/#plans'}}") Pricing
     a.item(href='/about' class="{{isActivePath '/about'}}") About
     .right.menu

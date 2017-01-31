@@ -19,14 +19,14 @@ Cloudinary.config
 
 
 
-Meteor.publish 'tags', (selected_tags)->
+Meteor.publish 'tags', (selected_tags, filter)->
     self = @
     match = {}
     if selected_tags.length > 0 then match.tags = $all: selected_tags
-    match._id = $ne: @userId
-    # match.checked_in = true
-
-    cloud = Meteor.users.aggregate [
+    if filter then match.type = filter
+    # console.log filter
+    
+    cloud = Docs.aggregate [
         { $match: match }
         { $project: tags: 1 }
         { $unwind: "$tags" }

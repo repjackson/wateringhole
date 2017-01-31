@@ -1,7 +1,7 @@
 if Meteor.isClient
     
     Template.cloud.onCreated ->
-        @autorun -> Meteor.subscribe 'tags', selected_tags.array()
+        @autorun -> Meteor.subscribe('tags', selected_tags.array(), Template.currentData().filter)
         @autorun -> Meteor.subscribe 'me'
         # @autorun -> Meteor.subscribe 'usernames'
     
@@ -12,8 +12,8 @@ if Meteor.isClient
     
     Template.cloud.helpers
         all_tags: ->
-            user_count = Meteor.users.find( _id: $ne: Meteor.userId() ).count()
-            if 0 < user_count < 3 then Tags.find({ count: $lt: user_count }, {limit:10}) else Tags.find({}, limit:10)
+            doc_count = Docs.find().count()
+            if 0 < doc_count < 3 then Tags.find { count: $lt: doc_count } else Tags.find()
     
         cloud_tag_class: ->
             button_class = switch

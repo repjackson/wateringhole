@@ -1,10 +1,10 @@
 template(name='features')
     .ui.container
         h1.ui.horizontal.header.divider Features
-        #add_feature.ui.basic.circular.icon.button
-            i.green.plus.icon
         +feature_cloud
         +feature_cards
+        #add_feature.ui.basic.big.circular.icon.button
+            i.green.plus.icon
         
     
     
@@ -20,6 +20,7 @@ template(name='feature_cloud')
         each feature_tags
             .ui.circular.basic.button.select_tag(class=cloud_tag_class) 
                 strong #{this.name}
+                // small #{this.count}
 
 
 template(name='feature_cards')

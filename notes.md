@@ -1,3 +1,7 @@
+DEPLOY_HOSTNAME=us-east-1.galaxy-deploy.meteor.com meteor deploy --settings settings.json www.wateringhole.community
+
+
+
 db.docs.find({"authorId": {$exists: true}}).forEach(function(item)
 {
         item.author_id = "vyqyHFRZG4CpogTAG";

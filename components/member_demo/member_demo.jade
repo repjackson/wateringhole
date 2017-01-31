@@ -1,0 +1,44 @@
+template(name='member_demo')
+    h1.ui.horizontal.header.divider Member Management Demo
+    +member_demo_cloud
+    +member_demo_cards
+    #add_demo_member.ui.basic.big.circular.icon.button
+        i.green.plus.icon
+
+    
+
+template(name='member_demo_cloud')
+    #cloud.ui.basic.center.aligned.segment
+        if selected_member_demo_tags
+            #clear_tags.ui.primary.icon.circular.large.button
+                i.remove.icon
+            each selected_member_demo_tags
+                .unselect_tag.ui.primary.circular.large.button
+                    strong #{this}
+        each member_demo_tags
+            .ui.circular.basic.button.select_tag(class=cloud_tag_class) 
+                strong #{this.name}
+                // small #{this.count}
+
+
+template(name='member_demo_cards')
+    .ui.container
+        .ui.four.stackable.centered.cards
+            each demo_members
+                +member_demo_card
+
+
+
+template(name='member_demo_card')
+    .ui.card
+        .image
+            img.ui.image(src="{{c.url image_id height=400 width=400 crop='fill'}}")
+        .content
+            .ui.center.aligned.header #{title}
+            .meta
+                each tags
+                    .ui.tiny.compact.circular.button(class=demo_member_tag_class) #{this}
+            .description !{description}
+        .extra.content
+            a.ui.basic.circular.icon.button(href="/edit/#{_id}")
+                i.blue.pencil.icon

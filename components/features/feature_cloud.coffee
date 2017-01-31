@@ -12,7 +12,10 @@ if Meteor.isClient
     
     Template.feature_cloud.helpers
         feature_tags: ->
-            Feature_tags.find()
+            doc_count = Docs.find().count()
+            if 0 < doc_count < 3 then Feature_tags.find { count: $lt: doc_count } else Feature_tags.find()
+
+            # Feature_tags.find()
 
         cloud_tag_class: ->
             button_class = switch

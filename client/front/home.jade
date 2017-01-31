@@ -4,6 +4,7 @@ template(name='home')
     .ui.hidden.divider
     .ui.container
         +key_features
+        +member_demo
         +plans
         // +clients
 
@@ -61,18 +62,29 @@ template(name='key_features')
 template(name='plans')
     h2#plans.ui.horizontal.header.divider Plans
     .ui.container
-        .ui.segment
-            .ui.header Level 1
-            .ui.list
-                .item Member Portal
-        .ui.segment
-            .ui.header Level 2
-            .ui.list
-                .item Check In Sytem
-                .item Time Tracking
-                .item Member Usage Analytics
-                
+        .ui.cards
+            .ui.card
+                .content
+                    .ui.header Level 1
+                    .ui.list
+                        .item Member Portal
+            .ui.card
+                .content
+                    .ui.header Level 2
+                    .ui.list
+                        .item Check In System
+                        .item Time Tracking
+                        .item Member Usage Analytics
+            .ui.card
+                .content 
+                    .ui.header Level 3 (coming in March)
+                    .ui.list
+                        .item Member Transactions
+                        .item Receive % 
+
 template(name='clients')
     .ui.horizontal.header.divider Clients
     .ui.card
         .ui.header Impact Hub Boulder
+        
+    
