@@ -58,7 +58,7 @@ if Meteor.isClient
                     confirmButtonText: 'Ok'
                     closeOnConfirm: true
                     }, ->
-                        FlowRouter.go "/profile/view/#{user._id}"
+                        FlowRouter.go "/account/profile/view/#{user._id}"
                 
             
             

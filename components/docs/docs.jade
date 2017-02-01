@@ -38,7 +38,7 @@ template(name='docs')
 
 
 template(name='view')
-    .ui.basic.segment
+    .ui.segment.container
         .content
             a(href="/view/#{_id}")
                 .image
@@ -49,11 +49,8 @@ template(name='view')
                     .ui.button.tag(class=tag_class) #{this}
             .description
                 |!{description}
-            +voting
-            +favorite
             if can_edit
                 .edit.ui.icon.circular.basic.button
                     i.pencil.icon.icon
             else
                 | by #{author.username} #{when}
-            +user_blurb
