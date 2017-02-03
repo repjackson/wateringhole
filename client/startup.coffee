@@ -1,2 +1,4 @@
 Meteor.startup ->
-    console.log location.hostname.split('.')[0]
+    # if location.hostname.split('.')[0]
+    #     herd = location.hostname.split('.')[0]
+    #     Session.set 'herd', herd

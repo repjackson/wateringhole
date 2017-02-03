@@ -1,0 +1,49 @@
+with herd
+    .ui.container
+        h1.ui.center.aligned.header #{name} Herd
+        .image
+            img.ui.centered.image(src="{{c.url image_id height=400 width=800 background='white' crop='lpad'}}")
+        .ui.hidden.divider
+        .ui.divided.stackable.grid
+            .ten.wide.column
+                .meta
+                    a(href=link target='_blank') #{link}
+                .description
+                    |!{description}
+                .ui.horizontal.divider.header Members
+                .ui.list
+                    each member_list
+                        .item #{profile.name}                    
+            .five.wide.column
+                if is_member
+                    if is_inside_herd
+                        #go_outside_herd.ui.basic.blue.fluid.button
+                            | Go Outside #{name} Herd
+                    else
+                        #go_inside_herd.ui.basic.green.fluid.button
+                            | Go Inside #{name} Herd
+                .ui.horizontal.divider.header Tags
+                each tags
+                    .ui.basic.label #{this}
+                if currentUser
+                    .ui.horizontal.divider.header Your Membership
+                    if is_member
+                        #leave_herd.ui.basic.red.fluid.button
+                            i.minus.icon
+                            |Leave Herd
+                    else
+                        #join_herd.ui.basic.green.fluid.button
+                            i.plus.icon
+                            |Join Herd
+                .ui.horizontal.divider.header Herd Status
+                if private
+                    .ui.basic.label Private
+                else
+                        .ui.basic.label Public
+                if isInRole 'admin'
+                    .extra.content
+                        .ui.divider
+                        i.large.red.configure.icon
+                        .edit.ui.primary.basic.button
+                            i.pencil.icon
+                            |Edit
