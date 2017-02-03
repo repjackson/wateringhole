@@ -4,6 +4,8 @@
 Herds.before.insert (userId, doc)->
     doc.timestamp = Date.now()
     doc.author_id = Meteor.userId()
+    doc.members = []
+    
     return
 
 Herds.after.update ((userId, doc, fieldNames, modifier, options) ->

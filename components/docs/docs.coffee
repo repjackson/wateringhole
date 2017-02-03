@@ -6,6 +6,7 @@ Docs.before.insert (userId, doc)->
     doc.points = 0
     doc.down_voters = []
     doc.up_voters = []
+    doc.tags = [Meteor.user().profile.current_herd]
     return
 
 Docs.after.update ((userId, doc, fieldNames, modifier, options) ->
@@ -76,12 +77,18 @@ if Meteor.isServer
     
     Meteor.publish 'docs', (selected_tags, filter)->
     
+        user = Meteor.users.findOne @userId
+        current_herd = user.profile.current_herd
+    
         self = @
         match = {}
-        if selected_tags.length > 0 then match.tags = $all: selected_tags
+        selected_tags.push current_herd
+        match.tags = $all: selected_tags
+        # if selected_tags.length > 0 then match.tags = $all: selected_tags
         if filter then match.type = filter
-        match.type = $ne: 'timecard'
-    
+
+        
+
         Docs.find match,
             limit: 5
             
