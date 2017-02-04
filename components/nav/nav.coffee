@@ -2,13 +2,15 @@ if Meteor.isClient
     Template.nav.events
         'click #logout': -> 
             AccountsTemplates.logout()
-            console.log Meteor.absoluteUrl()
-            Session.set 'herd', null
-            FlowRouter.url()
             
         
     Template.nav.helpers
 
+    # Template.nav.onCreated ->
+    #     self = @
+    #     self.autorun ->
+    #         self.subscribe 'herd', Meteor.user().profile.current_herd_id
+    
 
 
 # if Meteor.isServer

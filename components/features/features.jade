@@ -1,6 +1,7 @@
 template(name='features')
     .ui.container
-        h1.ui.horizontal.header.divider Features
+        h1.ui.center.aligned.header
+            .wild_header Features
         +feature_cloud
         +feature_cards
         #add_feature.ui.basic.big.circular.icon.button
@@ -25,7 +26,7 @@ template(name='feature_cloud')
 
 template(name='feature_cards')
     .ui.container
-        .ui.four.stackable.cards
+        .ui.four.stackable.blue.cards
             each features
                 +feature_card
 

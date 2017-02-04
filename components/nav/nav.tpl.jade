@@ -1,23 +1,25 @@
 .ui.inverted.menu
-    if currentUser.profile.current_herd
-        a.header.item(href="/" class="{{isActivePath '/'}}")
-            h3 {{$.Session.get 'herd'}}
+    if currentUser.profile.current_herd_id
+        // a.item(href='/members' class="{{isActivePath '/members'}}") 
+        //     i.users.icon
+        //     |Members
         a.item(href='/docs' class="{{isActivePath '/docs'}}") 
-            i.pin.icon
-            |Bulletin Board
-        a.item(href='/events' class="{{isActivePath '/events'}}")
-            i.calendar.icon
-            strong Events
-        a.item(href='/posts' class="{{isActivePath '/posts'}}")
-            i.newspaper.icon
-            strong Blog
-        a.item(href='/herds' class="{{isActivePath '/herds'}}") Herds
+            .wild_header Bulletin Board
+        // a.item(href='/events' class="{{isActivePath '/events'}}")
+        //     i.calendar.icon
+        //     strong Events
+        // a.item(href='/posts' class="{{isActivePath '/posts'}}")
+        //     i.newspaper.icon
+        //     strong Blog
+        a.item(href='/herds' class="{{isActivePath '/herds'}}")
+            .wild_header Herds
     else
-        a.header.item(href='/' class="{{isActivePath '/'}}")
-            h3 Watering Hole
+        a.item(href='/' class="{{isActivePath '/'}}")
+            .wild_header Watering Hole
         a.item(href='/features' class="{{isActivePath '/features'}}") Features
         a.item(href='/#plans' class="{{isActivePath '/#plans'}}") Pricing
-        a.item(href='/herds' class="{{isActivePath '/herds'}}") Herds
+        a.item(href='/herds' class="{{isActivePath '/herds'}}") 
+            .wild_header Herds
         // a.item(href='/about' class="{{isActivePath '/about'}}") About
     .right.menu
         if currentUser
@@ -25,8 +27,8 @@
             //     a.item(href='/admin/' class="{{isActivePath '/admin/'}}")
             //         i.configure.icon
             //         | Admin
-            if currentUser.profile.current_herd
-                .item Current Herd: #{currentUser.profile.current_herd}
+            if currentUser.profile.current_herd_name
+                .item Current Herd: #{currentUser.profile.current_herd_name}
             a.item(href="/account/profile/edit/#{currentUser._id}" class="{{isActivePath '/account/profile/edit/#{currentUser._id}'}}")
                 if currentUser.profile.image_id
                     img.ui.avatar.image(src="{{c.url currentUser.profile.image_id width=50 height=50 gravity='face' crop='fill'}}")

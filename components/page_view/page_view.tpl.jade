@@ -2,9 +2,8 @@ with item
     .ui.container
         .image
             img.ui.centered.image(src="{{c.url image_id height=400 width=800 background='white' crop='lpad'}}")
-            .overlay-text 
-                h1 #{title}
         .ui.hidden.divider
+        h1.ui.header #{title}
         .ui.divided.stackable.grid
             .ten.wide.column
                 .meta
@@ -12,20 +11,15 @@ with item
                 .description
                     |!{description}
             .five.wide.column
-                h2.impact-header Tags
-                each ecosystem_tags
+                if link
+                    a.ui.basic.fluid.button(href=link target='_blank') 
+                        i.external.icon
+                        |External Link
+                h2.ui.horizontal.divider.header Tags
+                each tags
                     .ui.basic.label #{this}
-                // h2.impact-header Actions
-                // +favorite
-                if isInRole 'admin'
-                    h2.impact-header Status
-                    if published
-                        .ui.basic.green.label Published
-                    else
-                        .ui.basic.red.label Unpublished
-                    .extra.content
-                        .ui.divider
-                        i.large.red.configure.icon
-                        .edit.ui.primary.basic.button
-                            i.pencil.icon
-                            |Edit
+                if can_edit
+                    h2.ui.horizontal.divider.header Actions
+                    .edit.ui.primary.basic.button
+                        i.pencil.icon
+                        |Edit

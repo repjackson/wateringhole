@@ -1,10 +1,3 @@
-Meteor.publish 'featured_posts', ->
-    Docs.find {
-        featured: true
-        type: 'post'
-        }, sort: publish_date: -1
-        
-
 Meteor.publish 'selected_posts', (selected_post_tags)->
     
     self = @

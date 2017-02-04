@@ -32,7 +32,7 @@ if Meteor.isClient
             return list
                 
         is_inside_herd: ->
-            @herd_tag is Meteor.user().profile.current_herd
+            @_id is Meteor.user().profile.current_herd_id
             
     
     Template.view_herd.events
@@ -44,10 +44,15 @@ if Meteor.isClient
         'click #join_herd': ->
             Herds.update FlowRouter.getParam('herd_id'),
                 $addToSet: members: Meteor.userId()
+            Meteor.users.update Meteor.userId(),
+                $addToSet: "profile.herds": FlowRouter.getParam('herd_id')
+                
         
         'click #leave_herd': ->
             Herds.update FlowRouter.getParam('herd_id'),
                 $pull: members: Meteor.userId()
+            Meteor.users.update Meteor.userId(),
+                $pull: "profile.herds": FlowRouter.getParam('herd_id')
             
         'click #go_inside_herd': ->
             Meteor.call 'go_inside_herd', @_id
@@ -65,9 +70,15 @@ if Meteor.isServer
         go_inside_herd: (id)->
             herd = Herds.findOne id
             Meteor.users.update Meteor.userId(),
-                $set: "profile.current_herd": herd.herd_tag
+                $set: 
+                    "profile.current_herd_id": id
+                    "profile.current_herd_name": herd.name
+                    "profile.current_herd_tag": herd.herd_tag
         
         go_outside_herd: ->
             Meteor.users.update Meteor.userId(),
-                $set: "profile.current_herd": null
+                $unset: 
+                    "profile.current_herd_id": ""
+                    "profile.current_herd_name": ""
+                    "profile.current_herd_tag": ""
             

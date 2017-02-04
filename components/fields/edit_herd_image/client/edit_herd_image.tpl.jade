@@ -3,8 +3,8 @@
     if image_id
         .field
             label Image
-            .ui.large.image
-                img(src="{{c.url image_id width=800 crop='fit'}}")
+            .ui.image
+                img(src="{{c.url image_id }}")
                 a#remove_photo.ui.top.left.attached.link.basic.label Remove
                 .ui.bottom.right.attached.basic.label Image Id: #{image_id}
     else

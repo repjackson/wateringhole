@@ -1,6 +1,7 @@
 template(name='herds')
     .ui.container
-        h1.ui.horizontal.header.divider Herds
+        h1.ui.center.aligned.header
+            .wild_header Herds
         +herd_cloud
         +herd_items
         #add_herd.ui.basic.big.circular.icon.button
@@ -11,6 +12,9 @@ template(name='herds')
 
 template(name='herd_cloud')
     #cloud.ui.basic.segment.center.aligned.container
+        .ui.left.icon.input
+            i.search.icon
+            +inputAutocomplete settings=settings id="search" class="" autocomplete="off" 
         if selected_herd_tags
             #clear_tags.ui.primary.icon.circular.large.button
                 i.remove.icon

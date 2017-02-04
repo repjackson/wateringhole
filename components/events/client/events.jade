@@ -6,32 +6,27 @@ template(name='events')
         //         h1.ls-l.overlay-text.slider-text(style="top: 50%; text-size: 300%;") 
         //             | Events at Impact Hub Boulder
         .ui.basic.segment
-            .ui.stackable.grid
-                .twelve.wide.column
-                    +upcoming_events
-                    +reoccurring_events
-                    +past_events
-                    if isInRole 'admin'
-                        +admin_events
-                .four.wide.column
-                    +cloud filter='event'
-                    // +google_calendar
-                    if isInRole 'admin'
-                        h2.impact-header 
-                            i.red.configure.icon
-                            |Admin
-                        .ui.fluid.input
-                            input#import_eventbrite(type='text' placeholder='Import Eventbrite with Id')
-                        .ui.horizontal.divider or
-                        #add_event.ui.basic.fluid.button 
-                            i.large.icons
-                                i.calendar.icon
-                                i.green.plus.corner.icon
-                            | Manually Add Event
+            +cloud filter='event'
+            +upcoming_events
+            +reoccurring_events
+            +past_events
+            if isInRole 'admin'
+                +admin_events
+                h2.ui.horizontal.divider.header 
+                    i.red.configure.icon
+                    |Admin
+                .ui.fluid.input
+                    input#import_eventbrite(type='text' placeholder='Import Eventbrite with Id')
+                .ui.horizontal.divider or
+                #add_event.ui.basic.fluid.button 
+                    i.large.icons
+                        i.calendar.icon
+                        i.green.plus.corner.icon
+                    | Manually Add Event
 
 template(name='reoccurring_events')
     if reoccurring_events.count
-        h2.impact-header Reoccurring Events
+        h2.ui.horizontal.divider.header Reoccurring Events
         .ui.centered.stackable.three.cards
             each reoccurring_events
                 +event_card
@@ -39,7 +34,7 @@ template(name='reoccurring_events')
 
 template(name='upcoming_events')
     if upcoming_events.count
-        h2.impact-header Upcoming Events
+        h2.ui.horizontal.divider.header Upcoming Events
         .ui.centered.stackable.three.cards
             each upcoming_events
                 +event_card
@@ -47,7 +42,7 @@ template(name='upcoming_events')
 
 template(name='past_events')
     if past_events.count
-        h2.impact-header Past Events
+        h2.ui.horizontal.divider.header Past Events
         .ui.centered.stackable.three.cards
             each past_events
                 +event_card
@@ -55,7 +50,7 @@ template(name='past_events')
 
 template(name='admin_events')
     if admin_events.count
-        h2.impact-header 
+        h2.ui.horizontal.divider.header 
             i.red.configure.icon
             |Unpublished Events
         .ui.centered.stackable.three.cards

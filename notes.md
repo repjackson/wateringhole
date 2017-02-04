@@ -9,6 +9,16 @@ db.docs.find({"authorId": {$exists: true}}).forEach(function(item)
 })
 
 
+
+<!--convert herds to docs-->
+
+db.herds.find().forEach(function(item)
+{
+        item.author_id = "vyqyHFRZG4CpogTAG";
+        db.docs.save(item);
+})
+
+
 db.docs.update({
             }, {
                 $set: {

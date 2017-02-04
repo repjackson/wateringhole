@@ -7,13 +7,13 @@ FlowRouter.route '/admin', action: (params) ->
  
  
 if Meteor.isClient
-    Template.users.onCreated ->
+    Template.user_table.onCreated ->
         self = @
         self.autorun ->
             self.subscribe 'hub_users'
     
     
-    Template.users.helpers
+    Template.user_table.helpers
         hub_users: -> 
             Meteor.users.find {}
             
@@ -29,7 +29,7 @@ if Meteor.isClient
     
     
     
-    Template.users.events
+    Template.user_table.events
         'click .remove_admin': ->
             self = @
             swal {
