@@ -11,6 +11,7 @@ if Meteor.isClient
         self = @
         self.autorun ->
             self.subscribe 'herd', FlowRouter.getParam('herd_id')
+            self.subscribe 'herd_member_list', FlowRouter.getParam('herd_id')
     
     
     
@@ -65,6 +66,10 @@ if Meteor.isClient
 if Meteor.isServer
     Meteor.publish 'herd', (id)->
         Herds.find id
+    
+    Meteor.publish 'herd_member_list', (id)->
+        Meteor.users.find 
+            "profile.herds": $in: [id]
     
     Meteor.methods
         go_inside_herd: (id)->
