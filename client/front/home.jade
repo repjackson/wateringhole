@@ -1,86 +1,47 @@
 template(name='home')
     // .ui.container
     +slider
-    .ui.hidden.divider
     .ui.container
-        +key_features
-        +member_demo
-        +plans
-        // +clients
+        .ui.hidden.divider
+        .big-text.wild_header.center Welcome to the Watering Hole
+        .shadows.center The Watering Hole is desiged to bring entrepreneurs together.
+        .ui.hidden.divider
+        .ui.stackable.two.column.celled.grid
+            .row
+                .column 
+                    a(href='/about') 
+                        .big-text.wild_header.center Our Story
+                    .ui.basic.segment
+                        p Our Story Text
+                        a(href='/about') 
+                            |Read More
+                            i.right.arrow.icon
+                .column 
+                    a(href='/features') 
+                        .big-text.wild_header.center Features
+                    .ui.two.column.centered.stackable.grid
+                        .column
+                            i.users.huge.icon
+                            .ui.header Member Portal
+                            .description Find member 
+                        .column
+                            i.calendar.huge.icon
+                            .ui.header Events
+                            .description Events feature
+                        a(href='/features') 
+                            |Read More
+                            i.right.arrow.icon
+            .row
+                .column 
+                    .big-text.wild_header.center Demo
+                .column 
+                    .big-text.wild_header.center Herds
+            // +key_features
+            // +member_demo
+            // +plans
 
-template(name='key_features')
-    .ui.horizontal.divider.header Key Features
-    .ui.stackable.container.grid
-        .eight.wide.column
-            .ui.items
-                .ui.item
-                    .image
-                        // img
-                        i.huge.icons
-                            i.big.thin.circle.icon
-                            i.users.icon
-                    .content
-                        .header Social Network
-                        .description 
-                            |Let your Members book the resources such as meeting room and projector. Coworkify calculates the charges and issues the invoice to each Member on behalf of you.
+template(name='short_features')
 
-                .ui.item
-                    .image
-                        // img
-                        i.huge.icons
-                            i.big.thin.circle.icon
-                            i.checked.calendar.icon
-                    .content
-                        .header Check In
-                        .description
-                            |Check in system
-        .eight.wide.column
-            .ui.items
-                .ui.item
-                    .image
-                        // img
-                        i.huge.icons
-                            i.big.thin.circle.icon
-                            i.users.icon
-                    .content
-                        .header Bulletin Board
-                        .description 
-                            |User submitted events, posts, announcements
-                .ui.item
-                    .image
-                        // img
-                        i.huge.icons
-                            i.big.thin.circle.icon
-                            i.money.icon
-                    .content
-                        .header Member Plans
-                        .description
-                            | Collect member fees and % from transactions
-
-
-
-template(name='plans')
-    h2#plans.ui.horizontal.header.divider Plans
-    .ui.container
-        .ui.centered.cards
-            .ui.card
-                .content
-                    .ui.header Level 1
-                    .ui.list
-                        .item Member Portal
-            .ui.card
-                .content
-                    .ui.header Level 2
-                    .ui.list
-                        .item Check In System
-                        .item Time Tracking
-                        .item Member Usage Analytics
-            .ui.card
-                .content 
-                    .ui.header Level 3
-                    .ui.list
-                        .item Member Transactions
-                        .item Receive % 
 
 template(name='clients')
     .ui.horizontal.header.divider Clients

@@ -1,4 +1,4 @@
-@Member_demo_tags= new Meteor.Collection 'member_demo_tags'
+@member_demo_tags= new Meteor.Collection 'member_demo_tags'
 
 
 
@@ -13,9 +13,9 @@ if Meteor.isClient
     Template.member_demo_cloud.helpers
         member_demo_tags: ->
             doc_count = Docs.find().count()
-            if 0 < doc_count < 3 then Member_demo_tags.find { count: $lt: doc_count } else Member_demo_tags.find()
+            if 0 < doc_count < 3 then member_demo_tags.find { count: $lt: doc_count } else member_demo_tags.find()
 
-            # Member_demo_tags.find()
+            # member_demo_tags.find()
 
         cloud_tag_class: ->
             button_class = switch

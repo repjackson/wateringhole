@@ -17,7 +17,9 @@ if Meteor.isClient
 if Meteor.isServer
     Meteor.publish 'demo_members', (selected_member_demo_tags)->
         match = {}
-        match.tags = $all: selected_member_demo_tags
+        if selected_member_demo_tags.length > 0
+            match.tags = $all: selected_member_demo_tags
+            
         match.type = 'demo_member'
         
-        Docs.find match, limit: 4
+        Docs.find match

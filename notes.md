@@ -231,7 +231,7 @@ emmett meeting notes 1/24
 
 tori thoughts
     check in tag
-    why just four people?  
+    why just four member?  
     points, tie in with actions at the hub
         make being at the hub 
         
@@ -239,7 +239,7 @@ tori thoughts
 my thoughts
     love game concept, everything you do is for a purpose, thus has value, thus should be rewarded/incentivized
     transaction goal is p2p, start with b2p, ie, get points (going to event, adding post) cash in with local business
-    business can provide coupon for people with certain tag points
+    business can provide coupon for member with certain tag points
     
     structure idea
         add post, each upvote gets points
@@ -248,4 +248,16 @@ my thoughts
         
         
 ultimate goal
-    have people compete for points per tags
+    have member compete for points per tags
+    
+    
+switch header fonts
+button font same as body
+
+
+
+about features
+demo herds
+contact
+
+each with their own page
