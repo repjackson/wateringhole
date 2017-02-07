@@ -6,10 +6,11 @@ template(name='events')
         //         h1.ls-l.overlay-text.slider-text(style="top: 50%; text-size: 300%;") 
         //             | Events at Impact Hub Boulder
         .ui.basic.segment
+            .center.wild_header.big-header Events Demo
             +cloud filter='event'
             +upcoming_events
-            +reoccurring_events
-            +past_events
+            // +reoccurring_events
+            // +past_events
             if isInRole 'admin'
                 +admin_events
                 h2.ui.horizontal.divider.header 
@@ -75,12 +76,12 @@ template(name='event_card')
                 strong #{day} 
             .meta
                 strong #{start_time} to #{end_time}
-        if isInRole 'admin'
-            if published
-                .ui.bottom.right.attached.basic.green.tiny.label 
-                    i.red.configure.icon
-                    |Pub
-            else
-                .ui.bottom.right.attached.basic.red.tiny.label 
-                    i.red.configure.icon
-                    |Unpub
+        // if isInRole 'admin'
+        //     if published
+        //         .ui.bottom.right.attached.basic.green.tiny.label 
+        //             i.red.configure.icon
+        //             |Pub
+        //     else
+        //         .ui.bottom.right.attached.basic.red.tiny.label 
+        //             i.red.configure.icon
+        //             |Unpub
