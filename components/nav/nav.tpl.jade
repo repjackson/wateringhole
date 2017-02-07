@@ -3,7 +3,7 @@
         .header.item
             | #{currentUser.profile.current_herd_name} Herd
         a.item(href='/members' class="{{isActivePath '/members'}}") 
-            | member
+            | Member
         // a.item(href='/docs' class="{{isActivePath '/docs'}}") 
         //     | Bulletin Board
         a.item(href='/events' class="{{isActivePath '/events'}}")
@@ -16,11 +16,11 @@
             h3 Watering Hole
         a.item(href='/features' class="{{isActivePath '/features'}}") 
             | Features
-        a.item(href='/about' class="{{isActivePath '/about'}}") About
         a.item(href='/demo' class="{{isActivePath '/demo'}}") Demo
+        a.item(href='/about' class="{{isActivePath '/about'}}") About
     .right.menu
-        a.item(href='/herds' class="{{isActivePath '/herds'}}") 
-            | Herds
+        // a.item(href='/herds' class="{{isActivePath '/herds'}}") 
+        //     | Herds
         if currentUser
             // if isInRole 'admin'
             //     a.item(href='/admin/' class="{{isActivePath '/admin/'}}")

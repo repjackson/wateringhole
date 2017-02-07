@@ -1,3 +1,11 @@
+FlowRouter.route '/edit/:doc_id', action: (params) ->
+    BlazeLayout.render 'layout',
+        main: 'edit'
+
+
+
+
+
 Template.edit.onCreated ->
     self = @
     self.autorun ->

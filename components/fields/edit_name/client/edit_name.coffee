@@ -1,5 +1,12 @@
 Template.edit_name.events
-    'blur #name': ->
-        name = $('#name').val()
+    'blur #first_name': ->
+        first_name = $('#first_name').val()
         Docs.update FlowRouter.getParam('doc_id'),
-            $set: name: name
+            $set: first_name: first_name
+            
+    'blur #last_name': ->
+        last_name = $('#last_name').val()
+        Docs.update FlowRouter.getParam('doc_id'),
+            $set: last_name: last_name
+            
+            

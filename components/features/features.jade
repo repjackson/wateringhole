@@ -1,10 +1,12 @@
 template(name='features')
     .ui.container
-        .ui.center.aligned.header Watering Hole Features
+        .center.wild_header.big-header Features
+        .ui.hidden.divider
         +feature_cloud
         +feature_cards
-        #add_feature.ui.basic.big.circular.icon.button
-            i.green.plus.icon
+        if isInRole 'admin'
+            #add_feature.ui.basic.big.circular.icon.button
+                i.green.plus.icon
         +plans        
     
     
@@ -25,7 +27,7 @@ template(name='feature_cloud')
 
 template(name='feature_cards')
     .ui.container
-        .ui.four.stackable.blue.cards
+        .ui.four.stackable.green.centered.cards
             each features
                 +feature_card
 
@@ -38,6 +40,7 @@ template(name='feature_card')
         .content
             .ui.center.aligned.header #{title}
             .description !{description}
-        .extra.content
-            a.ui.basic.circular.icon.button(href="/edit/#{_id}")
-                i.blue.pencil.icon
+        if isInRole 'admin'
+            .extra.content
+                a.ui.basic.circular.icon.button(href="/edit/#{_id}")
+                    i.blue.pencil.icon

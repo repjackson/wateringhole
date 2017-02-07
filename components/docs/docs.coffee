@@ -5,7 +5,7 @@ Docs.before.insert (userId, doc)->
     doc.author_id = Meteor.userId()
     doc.points = 0
     doc.down_voters = []
-    doc.tags.push Meteor.user().profile.current_herd
+    # doc.tags.push Meteor.user().profile.current_herd
     doc.up_voters = []
     return
 

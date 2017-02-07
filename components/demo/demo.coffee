@@ -1,7 +1,7 @@
 FlowRouter.route '/demo', action: ->
     BlazeLayout.render 'layout', 
-        sub_nav: 'demo_nav'
-        main: 'demo'
+        # sub_nav: 'demo_nav'
+        main: 'member_demo'
 
 
 FlowRouter.route '/demo/members', action: ->
