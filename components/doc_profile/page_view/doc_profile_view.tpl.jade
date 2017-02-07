@@ -19,6 +19,19 @@ with profile
                         a.ui.basic.button(href=link target='_blank') 
                             i.external.icon
                             |#{link}
+
+                if $.Session.get 'sending_message'
+                    #end_contact.ui.basic.button 
+                        |Cancel
+                    div
+                        .ui.form
+                            .field
+                                label New Message (include name and contact info)
+                                textarea#new_message_text(rows='3')
+                                #send_message.ui.basic.button Send Message
+                else
+                    #start_contact.ui.basic.button 
+                        |Contact Me
                 .ui.header
                     |Words that describe me:
                 each tags

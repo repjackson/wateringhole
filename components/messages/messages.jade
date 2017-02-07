@@ -1,0 +1,15 @@
+
+
+template(name='messages')
+    .ui.container
+        each messages
+            +message
+
+        
+
+
+template(name='message')
+    .ui.segment.container
+        .content
+            h1.ui.header #{text}
+            .meta from #{author.name} #{when}

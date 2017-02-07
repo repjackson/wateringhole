@@ -21,11 +21,6 @@ Herds.helpers
 
 
 
-FlowRouter.route '/herds', action: (params) ->
-    BlazeLayout.render 'layout',
-        main: 'herds'
-
-
 
 
 if Meteor.isClient

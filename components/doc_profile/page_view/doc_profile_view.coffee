@@ -23,3 +23,18 @@ if Meteor.isClient
         'click .edit': ->
             doc_id = FlowRouter.getParam('doc_id')
             FlowRouter.go "/edit_profile/#{doc_id}"
+    
+    
+        'click #start_contact': ->
+            Session.set 'sending_message', true
+    
+        'click #end_contact': ->
+            Session.set 'sending_message', false
+    
+        'click #send_message': (e,t)->
+            text = $('#new_message_text').val()
+            Meteor.call 'send_message', @_id, text, ->
+                alert "Message with #{text} to #{@_id} sent"
+                Session.set 'sending_message', false
+                
+            

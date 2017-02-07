@@ -10,7 +10,7 @@ template(name='events')
             +cloud filter='event'
             +upcoming_events
             // +reoccurring_events
-            // +past_events
+            +past_events
             if isInRole 'admin'
                 +admin_events
                 h2.ui.horizontal.divider.header 
