@@ -1,13 +1,7 @@
 if Meteor.isClient
-    
     Template.cloud.onCreated ->
         @autorun -> Meteor.subscribe('tags', selected_tags.array(), Template.currentData().filter)
         @autorun -> Meteor.subscribe 'me'
-        # @autorun -> Meteor.subscribe 'usernames'
-    
-    
-
-    
     
     
     Template.cloud.helpers

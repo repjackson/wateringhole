@@ -3,6 +3,8 @@
 Messages.before.insert (userId, doc)->
     doc.timestamp = Date.now()
     doc.author_id = Meteor.userId()
+    doc.sent = false
+    doc.read = false
     return
 
 
@@ -33,8 +35,13 @@ if Meteor.isClient
         # 'click .edit': -> FlowRouter.go("/edit/#{@_id}")
 
     Template.messages.events
-
-
+        'click #new_message': ->
+            id = Messages.insert({})
+            FlowRouter.go "/messages/edit/#{id}"
+            
+            
+            
+            
 if Meteor.isServer
     Messages.allow
         insert: (userId, doc) -> doc.author_id is userId

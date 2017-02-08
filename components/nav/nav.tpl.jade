@@ -1,23 +1,23 @@
 .ui.inverted.green.huge.menu
-    if currentUser.profile.current_herd_id
-        .header.item
-            | #{currentUser.profile.current_herd_name} Herd
-        a.item(href='/members' class="{{isActivePath '/members'}}") 
-            | Member
-        // a.item(href='/docs' class="{{isActivePath '/docs'}}") 
-        //     | Bulletin Board
-        // a.item(href='/posts' class="{{isActivePath '/posts'}}")
-        //     i.newspaper.icon
-        //     strong Blog
-    else
-        a.header.item(href='/' class="{{isActivePath '/'}}")
-            h3 Watering Hole
-        a.item(href='/features' class="{{isActivePath '/features'}}") 
-            | Features
-        a.item(href='/demo' class="{{isActivePath '/demo'}}") People Demo
-        a.item(href='/events' class="{{isActivePath '/events'}}")
-            | Events Demo
-        a.item(href='/about' class="{{isActivePath '/about'}}") About
+    // if currentUser.profile.current_herd_id
+    //     .header.item
+    //         | #{currentUser.profile.current_herd_name} Herd
+    //     a.item(href='/members' class="{{isActivePath '/members'}}") 
+    //         | Members
+    //     // a.item(href='/docs' class="{{isActivePath '/docs'}}") 
+    //     //     | Bulletin Board
+    //     // a.item(href='/posts' class="{{isActivePath '/posts'}}")
+    //     //     i.newspaper.icon
+    //     //     strong Blog
+    // else
+    a.header.item(href='/' class="{{isActivePath '/'}}")
+        h3 The Watering Hole
+    a.item(href='/features' class="{{isActivePath '/features'}}") 
+        | Features
+    a.item(href='/demo' class="{{isActivePath '/demo'}}") People Demo
+    a.item(href='/events' class="{{isActivePath '/events'}}")
+        | Events Demo
+    a.item(href='/about' class="{{isActivePath '/about'}}") About
     .right.menu
         // a.item(href='/herds' class="{{isActivePath '/herds'}}") 
         //     | Herds
@@ -38,7 +38,9 @@
                 else
                     | Profile
             a#logout.ui.item(href='#') 
+                i.sign.out.icon
                 | Sign Out
         else
             a.ui.item(href='/sign-in') 
+                i.sign.in.icon
                 | Sign In

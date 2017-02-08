@@ -1,6 +1,9 @@
 
 
-template(name='messages')
+template(name='old_messages')
+    #new_message.ui.basic.button 
+        i.plus.icon
+        |New Message
     .ui.container
         each messages
             +message
@@ -8,7 +11,7 @@ template(name='messages')
         
 
 
-template(name='message')
+template(name='old_message')
     .ui.segment.container
         .content
             h1.ui.header #{text}
